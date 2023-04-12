@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: product
+  group_id: 00g8shxj76qbtWnFY5d7

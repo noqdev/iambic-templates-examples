@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: engineering
+  group_id: 00g8shzqzy4uCep9t5d7

@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: sales
+  group_id: 00g8shvvu29t428oz5d7

@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: AWSSecurityAuditors
+  group_id: 00g86t3dp8myH6a4P5d7

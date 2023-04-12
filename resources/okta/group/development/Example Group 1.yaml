@@ -1,0 +1,6 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: Example Group 1
+  description: This is an example group
+  group_id: 00g7s39wnsvhETmQm5d7

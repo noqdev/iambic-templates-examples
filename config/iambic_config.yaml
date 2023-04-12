@@ -31,3 +31,7 @@ aws:
         region: us-east-1
       org_account_id: '580605962305'
       org_id: o-8t0mt0ybdd
+extends:
+  - assume_role_arn: arn:aws:iam::580605962305:role/IambicSpokeRole
+    key: AWS_SECRETS_MANAGER
+    value: arn:aws:secretsmanager:us-east-1:580605962305:secret:iambic-config-secrets-c03d249e-a067-461c-a6a4-7d7d97f40bda-Bpuwi1

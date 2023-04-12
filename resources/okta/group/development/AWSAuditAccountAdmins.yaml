@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: AWSAuditAccountAdmins
+  group_id: 00g86t3doa74cPxmV5d7

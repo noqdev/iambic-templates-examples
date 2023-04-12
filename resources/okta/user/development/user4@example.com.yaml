@@ -1,0 +1,11 @@
+template_type: NOQ::Okta::User
+idp_name: development
+properties:
+  profile:
+    email: user4@example.com
+    firstName: User4
+    lastName: Example
+    login: user4@example.com
+  status: provisioned
+  user_id: 00u8v68kgvDzaWJr95d7
+  username: user4@example.com

@@ -1,0 +1,8 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: AWS IAM Identity Center
+  assignments:
+    - user: user3@example.com
+  id: 0oa86ssq5y1iEq5mY5d7
+  status: ACTIVE

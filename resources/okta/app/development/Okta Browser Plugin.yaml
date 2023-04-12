@@ -1,0 +1,6 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: Okta Browser Plugin
+  id: 0oa7s1q1umJBTTefL5d7
+  status: ACTIVE

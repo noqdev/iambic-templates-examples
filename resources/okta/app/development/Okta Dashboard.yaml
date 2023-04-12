@@ -1,0 +1,6 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: Okta Dashboard
+  id: 0oa7s1q1vo6P4oOIs5d7
+  status: ACTIVE

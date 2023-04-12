@@ -1,0 +1,9 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: AWS Account Federation Deactivated
+  assignments:
+    - group: Example Group 1
+    - user: user2@example.com
+  id: 0oa7tsqiaoAZHwwHQ5d7
+  status: INACTIVE

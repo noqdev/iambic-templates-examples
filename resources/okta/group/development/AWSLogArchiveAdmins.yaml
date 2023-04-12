@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: AWSLogArchiveAdmins
+  group_id: 00g86t3dorV5uWkRT5d7

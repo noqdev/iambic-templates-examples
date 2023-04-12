@@ -1,0 +1,5 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: AWSLogArchiveViewers
+  group_id: 00g86t3dofYWT271x5d7

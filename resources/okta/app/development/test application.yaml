@@ -1,0 +1,6 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: test application
+  id: 0oa8v6gefi1aoWK0Z5d7
+  status: INACTIVE

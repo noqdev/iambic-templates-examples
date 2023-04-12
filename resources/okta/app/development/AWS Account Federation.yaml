@@ -1,0 +1,8 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: AWS Account Federation
+  assignments:
+    - user: user1@example.com
+  id: 0oa7tsrx7jv9XjxYP5d7
+  status: ACTIVE

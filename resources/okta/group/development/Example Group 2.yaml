@@ -1,0 +1,10 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: Example Group 2
+  description: Another example group
+  group_id: 00g7s3amuwkEc3FB55d7
+  members:
+    - username: curtis@noq.dev
+    - username: user1@example.com
+    - username: user2@example.com

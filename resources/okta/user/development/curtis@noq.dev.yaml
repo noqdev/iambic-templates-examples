@@ -1,0 +1,13 @@
+template_type: NOQ::Okta::User
+idp_name: development
+properties:
+  profile:
+    email: curtis@noq.dev
+    firstName: Curtis
+    github_id: castrapel
+    lastName: Castrapel
+    login: curtis@noq.dev
+    manager: Me Myself and I
+  status: recovery
+  user_id: 00u7s1q1waFnaGFAT5d7
+  username: curtis@noq.dev

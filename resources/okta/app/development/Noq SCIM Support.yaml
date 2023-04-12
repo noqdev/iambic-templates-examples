@@ -1,0 +1,9 @@
+template_type: NOQ::Okta::App
+idp_name: development
+properties:
+  name: Noq SCIM Support
+  assignments:
+    - user: curtis@noq.dev
+    - user: user3@example.com
+  id: 0oa7try2bwjqGlVOe5d7
+  status: ACTIVE
