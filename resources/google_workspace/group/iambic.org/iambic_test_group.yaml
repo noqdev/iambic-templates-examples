@@ -1,0 +1,11 @@
+template_type: NOQ::GoogleWorkspace::Group
+properties:
+  name: iambic-test-group
+  description: ''
+  domain: iambic.org
+  email: iambic-test-group@iambic.org
+  members:
+    - email: curtis@iambic.org
+      role: OWNER
+    - email: steven@iambic.org
+      status: UNDEFINED
