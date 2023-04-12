@@ -1,0 +1,14 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambic_itest_bad_template
+properties:
+  description: template with a bad tag key - attempt 3
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Deny
+        principal:
+          service: ec2.amazonaws.com
+    version: '2012-10-17'
+  role_name: iambic_itest_bad_template

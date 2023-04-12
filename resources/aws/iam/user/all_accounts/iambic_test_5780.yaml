@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IAM::User
+identifier: iambic_test_5780
+properties:
+  inline_policies:
+    - policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:initialpolicy
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  path: /iambic_test/
+  user_name: iambic_test_5780

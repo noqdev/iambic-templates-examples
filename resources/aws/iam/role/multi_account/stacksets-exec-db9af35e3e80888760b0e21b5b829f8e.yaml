@@ -1,0 +1,19 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+  - iambic_test_spoke_account_2
+  - iambic_test_spoke_account_3
+identifier: stacksets-exec-db9af35e3e80888760b0e21b5b829f8e
+properties:
+  description: Role created by AWSCloudFormation StackSets
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::580605962305:role/aws-service-role/stacksets.cloudformation.amazonaws.com/AWSServiceRoleForCloudFormationStackSetsOrgAdmin
+        sid: '1'
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  role_name: stacksets-exec-db9af35e3e80888760b0e21b5b829f8e

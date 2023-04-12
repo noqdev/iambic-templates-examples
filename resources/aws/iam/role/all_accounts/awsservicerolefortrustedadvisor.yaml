@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: AWSServiceRoleForTrustedAdvisor
+properties:
+  description: Access for the AWS Trusted Advisor Service to help reduce cost, increase performance, and improve security of your AWS environment.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: trustedadvisor.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/AWSTrustedAdvisorServiceRolePolicy
+  path: /aws-service-role/trustedadvisor.amazonaws.com/
+  role_name: AWSServiceRoleForTrustedAdvisor

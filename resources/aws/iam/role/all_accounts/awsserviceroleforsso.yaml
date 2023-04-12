@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: AWSServiceRoleForSSO
+properties:
+  description: Service-linked role used by AWS SSO to manage AWS resources, including IAM roles, policies and SAML IdP on your behalf.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: sso.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/AWSSSOServiceRolePolicy
+  path: /aws-service-role/sso.amazonaws.com/
+  role_name: AWSServiceRoleForSSO

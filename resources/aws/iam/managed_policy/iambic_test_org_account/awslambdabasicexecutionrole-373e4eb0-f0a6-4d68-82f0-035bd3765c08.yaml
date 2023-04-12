@@ -1,0 +1,20 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_org_account
+identifier: AWSLambdaBasicExecutionRole-373e4eb0-f0a6-4d68-82f0-035bd3765c08
+properties:
+  path: /service-role/
+  policy_document:
+    statement:
+      - action: logs:CreateLogGroup
+        effect: Allow
+        resource: arn:aws:logs:us-east-1:{{account_id}}:*
+      - action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+        effect: Allow
+        resource:
+          - arn:aws:logs:us-east-1:{{account_id}}:log-group:/aws/lambda/steven-test-lambda-efs:*
+          - arn:aws:logs:us-east-1:{{account_id}}:log-group:/aws/lambda/test-cf-*:*
+    version: '2012-10-17'
+  policy_name: AWSLambdaBasicExecutionRole-373e4eb0-f0a6-4d68-82f0-035bd3765c08

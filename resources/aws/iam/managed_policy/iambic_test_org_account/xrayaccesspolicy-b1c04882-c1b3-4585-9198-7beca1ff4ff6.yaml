@@ -1,0 +1,19 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_org_account
+identifier: XRayAccessPolicy-b1c04882-c1b3-4585-9198-7beca1ff4ff6
+properties:
+  description: Allow AWS Step Functions to call X-Ray daemon on your behalf
+  path: /service-role/
+  policy_document:
+    statement:
+      - action:
+          - xray:GetSamplingRules
+          - xray:GetSamplingTargets
+          - xray:PutTelemetryRecords
+          - xray:PutTraceSegments
+        effect: Allow
+        resource:
+          - '*'
+    version: '2012-10-17'
+  policy_name: XRayAccessPolicy-b1c04882-c1b3-4585-9198-7beca1ff4ff6

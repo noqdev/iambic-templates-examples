@@ -1,0 +1,20 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: IAMbicEventForwardingRole
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: events.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: IAMbicEventForwardingRolePolicy
+      statement:
+        - action:
+            - events:PutEvents
+          effect: Allow
+          resource:
+            - arn:aws:events:us-east-1:580605962305:event-bus/IAMbicChangeDetectionEventBus
+      version: '2012-10-17'
+  role_name: IAMbicEventForwardingRole

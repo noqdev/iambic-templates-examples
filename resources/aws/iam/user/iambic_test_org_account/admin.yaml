@@ -1,0 +1,8 @@
+template_type: NOQ::AWS::IAM::User
+included_accounts:
+  - iambic_test_org_account
+identifier: admin
+properties:
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  user_name: admin

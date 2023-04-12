@@ -1,0 +1,7 @@
+template_type: NOQ::AWS::IAM::Group
+included_accounts:
+  - iambic_test_spoke_account_2
+identifier: iambic_test_7840
+properties:
+  group_name: iambic_test_7840
+  path: /iambic_test/

@@ -1,0 +1,23 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambicHubRole
+properties:
+  description: Allows EC2 instances to call AWS services on your behalf.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: ec2.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: assumerole
+      statement:
+        - action:
+            - sts:assumerole
+          effect: Allow
+          resource:
+            - arn:aws:iam::*:role/IambicSpokeRole
+      version: '2012-10-17'
+  role_name: iambicHubRole

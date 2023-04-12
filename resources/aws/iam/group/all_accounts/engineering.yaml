@@ -1,0 +1,39 @@
+template_type: NOQ::AWS::IAM::Group
+identifier: engineering
+properties:
+  group_name: engineering
+  inline_policies:
+    - policy_name: base_permissions
+      statement:
+        - action:
+            - ec2:Describe*
+            - iam:*
+            - identitystore:*
+            - organizations:describe*
+            - organizations:list*
+            - secretsmanager:CreateSecret
+            - sso:*
+          effect: Allow
+          resource:
+            - '*'
+      version: '2012-10-17'
+    - included_accounts:
+        - iambic_test_org_account
+      policy_name: organization_access
+      statement:
+        - action:
+            - sts:AssumeRole
+            - sts:TagSession
+          effect: Allow
+          resource: '*'
+    - included_accounts:
+        - iambic_test_org_account
+      policy_name: read_iambic_secrets
+      statement:
+        - action:
+            - secretsmanager:GetSecretValue
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:us-east-1:{{account_id}}:secret:iambic-config-secrets-test-2-vfiRX8
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess

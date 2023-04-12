@@ -1,0 +1,31 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_3
+identifier: AWSReservedSSO_iambic_test_permission_set_0ec18f466e77ab08
+properties:
+  description: Permission set for testing IAMbic
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRoleWithSAML
+          - sts:TagSession
+        condition:
+          StringEquals:
+            SAML:aud: https://signin.aws.amazon.com/saml
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{account_id}}:saml-provider/AWSSSO_b2894bbe179458ae_DO_NOT_DELETE
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: AwsSSOInlinePolicy
+      statement:
+        - action:
+            - '*'
+          effect: Deny
+          resource:
+            - '*'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  max_session_duration: 43200
+  path: /aws-reserved/sso.amazonaws.com/
+  role_name: AWSReservedSSO_iambic_test_permission_set_0ec18f466e77ab08

@@ -1,0 +1,21 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_org_account
+identifier: LambdaInvokeScopedAccessPolicy-261cdb65-8e94-4663-bd63-033f94f6170a
+properties:
+  description: Allow AWS Step Functions to invoke Lambda functions on your behalf
+  path: /service-role/
+  policy_document:
+    statement:
+      - action:
+          - lambda:InvokeFunction
+        effect: Allow
+        resource:
+          - arn:aws:lambda:us-east-1:{{account_id}}:function:test-cf-LF1BYGX-i0sbKO236HBs:*
+      - action:
+          - lambda:InvokeFunction
+        effect: Allow
+        resource:
+          - arn:aws:lambda:us-east-1:{{account_id}}:function:test-cf-LF1BYGX-i0sbKO236HBs
+    version: '2012-10-17'
+  policy_name: LambdaInvokeScopedAccessPolicy-261cdb65-8e94-4663-bd63-033f94f6170a

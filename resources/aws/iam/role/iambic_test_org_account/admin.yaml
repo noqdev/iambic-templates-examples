@@ -1,0 +1,20 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: admin
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: ec2.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  role_name: admin
+  tags:
+    - key: noq-tra-active-users
+      value: ''
+    - key: noq-tra-supported-groups
+      value: steven@noq.dev:curtis@noq.dev:will@noq.dev:matt@noq.dev

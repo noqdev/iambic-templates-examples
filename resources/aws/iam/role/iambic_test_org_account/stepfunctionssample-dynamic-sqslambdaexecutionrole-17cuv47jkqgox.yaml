@@ -1,0 +1,22 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: StepFunctionsSample-Dynamic-SQSLambdaExecutionRole-17CUV47JKQGOX
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: lambda.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: LambdaSQSQueuePermissions
+      statement:
+        - action:
+            - sqs:DeleteMessage
+            - sqs:ReceiveMessage
+          effect: Allow
+          resource: arn:aws:sqs:us-east-1:{{account_id}}:StepFunctionsSample-DynamicParallelProcessing9137d065-952e-SQSQueue-dkhm7nAlsY8D
+      version: '2012-10-17'
+  role_name: StepFunctionsSample-Dynamic-SQSLambdaExecutionRole-17CUV47JKQGOX

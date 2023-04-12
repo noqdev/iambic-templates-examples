@@ -1,0 +1,84 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: IambicSpokeRole
+properties:
+  description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::580605962305:role/IambicHubRole
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: base_permissions
+      statement:
+        - action:
+            - ec2:Describe*
+            - iam:*
+            - identitystore:*
+            - organizations:describe*
+            - organizations:list*
+            - secretsmanager:CreateSecret
+            - sso:*
+          effect: Allow
+          resource:
+            - '*'
+      version: '2012-10-17'
+    - included_accounts:
+        - iambic_test_spoke_account_1
+      policy_name: delete_sqs_message
+      statement:
+        - action: sqs:DeleteMessage
+          effect: Allow
+          resource: arn:aws:sqs:us-east-1:{{account_id}}:iambic-itest-iam-mutation-events
+          sid: VisualEditor0
+      version: '2012-10-17'
+    - included_accounts:
+        - iambic_test_spoke_account_1
+      policy_name: iambic_secrets
+      statement:
+        - action:
+            - secretsmanager:GetSecretValue
+            - secretsmanager:describesecret
+            - secretsmanager:getrandompassword
+            - secretsmanager:getresourcepolicy
+            - secretsmanager:listsecrets
+            - secretsmanager:listsecretversionids
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/github-token-iambic-templates-itest
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/github-token-iambic-templates-itest-*
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/google
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/google-*
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/iambic-full
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/iambic-full-*
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/iambic_itest_secret*
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/google-only-secret
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/google-only-secret-*
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/okta-only-secret
+            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/okta-only-secret-*
+      version: '2012-10-17'
+    - included_accounts:
+        - iambic_test_org_account
+      policy_name: organization_access
+      statement:
+        - action:
+            - sts:AssumeRole
+            - sts:TagSession
+          effect: Allow
+          resource: '*'
+    - included_accounts:
+        - iambic_test_org_account
+      policy_name: read_iambic_secrets
+      statement:
+        - action:
+            - secretsmanager:GetSecretValue
+            - secretsmanager:PutSecretValue
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:us-east-1:{{account_id}}:secret:iambic-config-secrets-1648de15-0360-46ca-8461-e3e52b4a5520-psIg6N
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
+  role_name: IambicSpokeRole

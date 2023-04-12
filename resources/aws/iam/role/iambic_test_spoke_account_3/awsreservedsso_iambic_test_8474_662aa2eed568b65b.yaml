@@ -1,0 +1,38 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_3
+identifier: AWSReservedSSO_iambic_test_8474_662aa2eed568b65b
+properties:
+  description: This was created by a functional test.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRoleWithSAML
+          - sts:TagSession
+        condition:
+          StringEquals:
+            SAML:aud: https://signin.aws.amazon.com/saml
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{account_id}}:saml-provider/AWSSSO_b2894bbe179458ae_DO_NOT_DELETE
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: AwsSSOInlinePolicy
+      statement:
+        - action:
+            - ec2:list*
+          effect: Deny
+          resource:
+            - '*'
+        - action:
+            - ec2:list*
+          effect: Deny
+          resource:
+            - '*'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AWSHealthFullAccess
+  max_session_duration: 43200
+  path: /aws-reserved/sso.amazonaws.com/
+  permissions_boundary:
+    policy_arn: arn:aws:iam::{{account_id}}:policy/base_permission_boundary
+  role_name: AWSReservedSSO_iambic_test_8474_662aa2eed568b65b

@@ -1,0 +1,43 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: IambicSpokeRoleReadOnly
+properties:
+  description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::580605962305:role/IambicHubRole
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: base_permissions
+      statement:
+        - action:
+            - iam:Get*
+            - iam:List*
+            - identitystore:Describe*
+            - identitystore:Get*
+            - identitystore:List*
+            - organizations:describe*
+            - organizations:list*
+            - sso:Describe*
+            - sso:Get*
+            - sso:List*
+            - sso:Search*
+          effect: Allow
+          resource:
+            - '*'
+        - action:
+            - secretsmanager:CreateSecret
+            - secretsmanager:GetSecretValue
+            - secretsmanager:PutSecretValue
+            - secretsmanager:describesecret
+            - secretsmanager:listsecrets
+            - secretsmanager:listsecretversionids
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:*:secret:iambic-config-secrets-*
+      version: '2012-10-17'
+  role_name: IambicSpokeRoleReadOnly

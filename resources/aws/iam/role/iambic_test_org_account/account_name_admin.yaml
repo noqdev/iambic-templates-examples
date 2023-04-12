@@ -1,0 +1,56 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: '{{account_name}}_admin'
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: ec2.amazonaws.com
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  role_name: '{{account_name}}_admin'
+  tags:
+    - key: noq-authorized
+      value: curtis@noq.dev:will@noq.dev:steven@noq.dev:engineering@noq.dev
+    - key: noq-authorized-cli-only
+      value: ''

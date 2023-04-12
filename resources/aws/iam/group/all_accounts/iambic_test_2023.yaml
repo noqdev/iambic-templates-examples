@@ -1,0 +1,5 @@
+template_type: NOQ::AWS::IAM::Group
+identifier: iambic_test_2023
+properties:
+  group_name: iambic_test_2023
+  path: /iambic_test/

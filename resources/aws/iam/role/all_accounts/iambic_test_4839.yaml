@@ -1,0 +1,37 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: iambic_test_4839
+properties:
+  description: This was created by a functional test.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Deny
+        principal:
+          service: ec2.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:initialpolicy
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+    - included_accounts:
+        - iambic_test_spoke_account_2
+      policy_name: test_policy
+      statement:
+        - action:
+            - s3:NotARealAction
+          effect: Deny
+          resource:
+            - '*'
+        - action:
+            - s3:AlsoNotARealAction
+          effect: Deny
+          resource:
+            - '*'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  path: /iambic_test/
+  role_name: iambic_test_4839

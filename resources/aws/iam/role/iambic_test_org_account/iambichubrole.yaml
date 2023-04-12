@@ -1,0 +1,71 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: IambicHubRole
+properties:
+  description: This role is used by IAMbic to assume into the spoke role of every account defined in the IAMbic config. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRoleWithWebIdentity
+        condition:
+          ForAllValues:StringEquals:
+            token.actions.githubusercontent.com:aud: sts.amazonaws.com
+            token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
+          StringLike:
+            token.actions.githubusercontent.com:sub:
+              - repo:noqdev/iambic-templates-itest:environment:production
+              - repo:noqdev/iambic-templates-itest:ref:refs/heads/main
+              - repo:noqdev/iambic:*
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{account_id}}:oidc-provider/token.actions.githubusercontent.com
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws:
+            - arn:aws:iam::{{account_id}}:role/test_org_admin
+            - arn:aws:iam::{{account_id}}:role/{{account_name}}_admin
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::442632209887:role/iambic_github_app_lambda_execution
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: assume_spoke_role
+      statement:
+        - action:
+            - sts:assumerole
+          effect: Allow
+          resource:
+            - arn:aws:iam::*:role/IambicSpokeRole*
+      version: '2012-10-17'
+    - policy_name: list_spoke_account_info
+      statement:
+        - action:
+            - organizations:ListAccounts
+            - organizations:ListTagsForResource
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+  role_name: IambicHubRole
+  tags:
+    - key: noq-authorized
+      value: will@noq.dev:curtis@noq.dev:matt@noq.dev:steven@noq.dev:kayizzi.ctr@noq.dev
+    - key: noq-authorized-cli-only
+      value: ''

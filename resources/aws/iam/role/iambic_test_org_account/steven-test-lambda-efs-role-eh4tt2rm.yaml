@@ -1,0 +1,26 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: steven-test-lambda-efs-role-eh4tt2rm
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: lambda.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: invoke-func
+      statement:
+        - action: lambda:InvokeFunction
+          effect: Allow
+          resource: arn:aws:lambda:*:{{account_id}}:function:test-cf-*
+          sid: VisualEditor0
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AmazonElasticFileSystemClientFullAccess
+    - policy_arn: arn:aws:iam::{{account_id}}:policy/service-role/AWSLambdaBasicExecutionRole-373e4eb0-f0a6-4d68-82f0-035bd3765c08
+    - policy_arn: arn:aws:iam::{{account_id}}:policy/service-role/AWSLambdaVPCAccessExecutionRole-955315ce-9aea-4d55-a660-de40c6d32c6b
+  path: /service-role/
+  role_name: steven-test-lambda-efs-role-eh4tt2rm

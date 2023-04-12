@@ -1,0 +1,26 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: IambicSpokeRole_LOCAL_TEST
+properties:
+  description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: AROAYOLWP5BATVAXKMRGY
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: consume_iambic_changes
+      statement:
+        - action:
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+            - sqs:ReceiveMessage
+          effect: Allow
+          resource:
+            - arn:aws:sqs:us-east-1:{{account_id}}:IAMbicChangeDetectionQueue
+  role_name: IambicSpokeRole_LOCAL_TEST

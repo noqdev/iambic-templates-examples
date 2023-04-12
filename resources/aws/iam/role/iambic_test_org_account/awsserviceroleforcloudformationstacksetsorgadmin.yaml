@@ -1,0 +1,17 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: AWSServiceRoleForCloudFormationStackSetsOrgAdmin
+properties:
+  description: Service linked role for CloudFormation StackSets (Organization Admin)
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: stacksets.cloudformation.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/CloudFormationStackSetsOrgAdminServiceRolePolicy
+  path: /aws-service-role/stacksets.cloudformation.amazonaws.com/
+  role_name: AWSServiceRoleForCloudFormationStackSetsOrgAdmin

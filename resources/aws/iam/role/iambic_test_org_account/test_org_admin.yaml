@@ -1,0 +1,54 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: test_org_admin
+properties:
+  description: Allows EC2 instances to call AWS services on your behalf.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: ec2.amazonaws.com
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::759357822767:role/NoqCentralRoleLocalDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/prod_admin
+        sid: noqcurtis1651181478oqwp
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::259868150464:role/NoqCentralRoleStaging
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: generated_policy
+      statement:
+        - action:
+            - sts:AssumeRole
+          effect: Allow
+          resource:
+            - arn:aws:iam::759357822767:role/AutomaticPermissionsGenerationTestRole
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  role_name: test_org_admin
+  tags:
+    - key: noq-authorized
+      value: engineering@noq.dev:curtis@noq.dev
+    - key: noq-tra-active-users
+      value: rohit@noq.dev

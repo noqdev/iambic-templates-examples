@@ -1,0 +1,16 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_org_account
+identifier: AWSLambdaVPCAccessExecutionRole-955315ce-9aea-4d55-a660-de40c6d32c6b
+properties:
+  path: /service-role/
+  policy_document:
+    statement:
+      - action:
+          - ec2:CreateNetworkInterface
+          - ec2:DeleteNetworkInterface
+          - ec2:DescribeNetworkInterfaces
+        effect: Allow
+        resource: '*'
+    version: '2012-10-17'
+  policy_name: AWSLambdaVPCAccessExecutionRole-955315ce-9aea-4d55-a660-de40c6d32c6b

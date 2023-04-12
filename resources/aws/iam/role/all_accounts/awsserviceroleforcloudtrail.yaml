@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: AWSServiceRoleForCloudTrail
+properties:
+  description: This service linked role is used for supporting organization trail feature
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: cloudtrail.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/CloudTrailServiceRolePolicy
+  path: /aws-service-role/cloudtrail.amazonaws.com/
+  role_name: AWSServiceRoleForCloudTrail

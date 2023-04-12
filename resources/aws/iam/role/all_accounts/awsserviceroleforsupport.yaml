@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: AWSServiceRoleForSupport
+properties:
+  description: Enables resource access for AWS to provide billing, administrative and support services
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: support.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/AWSSupportServiceRolePolicy
+  path: /aws-service-role/support.amazonaws.com/
+  role_name: AWSServiceRoleForSupport

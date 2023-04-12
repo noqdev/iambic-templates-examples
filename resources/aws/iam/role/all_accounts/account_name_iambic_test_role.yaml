@@ -1,0 +1,39 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: '{{account_name}}_iambic_test_role'
+properties:
+  description: IAMbic test role on {{account_name}}
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Deny
+        principal:
+          service: ec2.amazonaws.com
+  inline_policies:
+    - included_accounts:
+        - iambic_test_org_account
+      policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:ListAllMyBuckets
+          effect: Deny
+          resource: '*'
+    - included_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:ListBucket
+          effect: Deny
+          resource: '*'
+        - action:
+            - s3:ListAllMyBuckets
+          effect: Deny
+          resource: '*'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  path: /iambic_test/
+  permissions_boundary:
+    policy_arn: arn:aws:iam::aws:policy/AWSDirectConnectReadOnlyAccess
+  role_name: '{{account_name}}_iambic_test_role'

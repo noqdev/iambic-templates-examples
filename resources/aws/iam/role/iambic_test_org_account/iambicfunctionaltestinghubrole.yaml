@@ -1,0 +1,19 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: IambicFunctionalTestingHubRole
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRoleWithWebIdentity
+        condition:
+          ForAllValues:StringEquals:
+            token.actions.githubusercontent.com:aud: sts.amazonaws.com
+            token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
+          StringLike:
+            token.actions.githubusercontent.com:sub: repo:noqdev/iambic:*
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::259868150464:oidc-provider/token.actions.githubusercontent.com
+    version: '2012-10-17'
+  role_name: IambicFunctionalTestingHubRole

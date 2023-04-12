@@ -1,0 +1,6 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+identifier: iambic_test_update4180
+properties:
+  name: iambic_test_update4180
+  description: This was created by a functional test.
+  session_duration: PT1H

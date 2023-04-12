@@ -1,0 +1,13 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: test-sts-caller-identity
+properties:
+  policy_document:
+    statement:
+      - action: sts:GetCallerIdentity
+        effect: Allow
+        resource: '*'
+        sid: VisualEditor0
+    version: '2012-10-17'
+  policy_name: test-sts-caller-identity

@@ -1,0 +1,12 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+identifier: base_permission_boundary
+properties:
+  description: This was created by a functional test.
+  policy_document:
+    statement:
+      - action: s3:ListObject
+        effect: Deny
+        resource:
+          - '*'
+    version: '2012-10-17'
+  policy_name: base_permission_boundary

@@ -1,0 +1,14 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: IambicFunctionalTestingSpokeRole
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::{{account_id}}:role/IambicFunctionalTestingHubRole
+        sid: Statement1
+    version: '2012-10-17'
+  role_name: IambicFunctionalTestingSpokeRole

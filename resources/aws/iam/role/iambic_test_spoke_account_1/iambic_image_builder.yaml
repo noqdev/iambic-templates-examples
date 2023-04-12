@@ -1,0 +1,54 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambic_image_builder
+properties:
+  description: build iambic image and upload to public ECR - bar10
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRoleWithWebIdentity
+        condition:
+          ForAllValues:StringEquals:
+            token.actions.githubusercontent.com:aud: sts.amazonaws.com
+            token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
+          StringLike:
+            token.actions.githubusercontent.com:sub: repo:noqdev/iambic:*
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{account_id}}:oidc-provider/token.actions.githubusercontent.com
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: ecr-write
+      statement:
+        - action:
+            - ecr-public:GetAuthorizationToken
+            - sts:GetServiceBearerToken
+          effect: Allow
+          resource: '*'
+          sid: GetAuthorizationToken
+        - action:
+            - ecr-public:BatchCheckLayerAvailability
+            - ecr-public:CompleteLayerUpload
+            - ecr-public:DescribeImages
+            - ecr-public:DescribeRepositories
+            - ecr-public:GetRepositoryPolicy
+            - ecr-public:InitiateLayerUpload
+            - ecr-public:PutImage
+            - ecr-public:UploadLayerPart
+          effect: Allow
+          resource:
+            - arn:aws:ecr-public::{{account_id}}:repository/iambic
+          sid: ManageRepositoryContents
+      version: '2012-10-17'
+  role_name: iambic_image_builder
+  tags:
+    - key: noq-authorized
+      value: steven@noq.dev:curtis@noq.dev:will@noq.dev
+    - key: test
+      value: a

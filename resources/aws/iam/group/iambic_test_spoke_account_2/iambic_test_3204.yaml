@@ -1,0 +1,15 @@
+template_type: NOQ::AWS::IAM::Group
+included_accounts:
+  - iambic_test_spoke_account_2
+identifier: iambic_test_3204
+properties:
+  group_name: iambic_test_3204
+  inline_policies:
+    - policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:initialpolicy
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+  path: /iambic_test/

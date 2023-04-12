@@ -1,0 +1,18 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: update-role-description
+properties:
+  policy_document:
+    statement:
+      - action: iam:UpdateRoleDescription
+        effect: Allow
+        resource: arn:aws:iam::{{account_id}}:role/iambic_itest_for_github_cicd
+        sid: VisualEditor0
+    version: '2012-10-17'
+  policy_name: update-role-description
+  tags:
+    - key: contact
+      value: steven@noq.dev
+    - key: purpose
+      value: to test out-of-band change because iambic detect ignore iambic change on cloudtrail

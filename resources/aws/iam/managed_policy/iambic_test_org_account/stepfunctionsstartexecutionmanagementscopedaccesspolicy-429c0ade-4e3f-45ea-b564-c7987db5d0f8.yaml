@@ -1,0 +1,28 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_org_account
+identifier: StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8
+properties:
+  description: Allows AWS Step Functions to start another workflow execution on your behalf.
+  path: /service-role/
+  policy_document:
+    statement:
+      - action:
+          - states:StartExecution
+        effect: Allow
+        resource:
+          - arn:aws:states:us-east-1:{{account_id}}:stateMachine:MyStateMachine
+      - action:
+          - states:DescribeExecution
+          - states:StopExecution
+        effect: Allow
+        resource: '*'
+      - action:
+          - events:DescribeRule
+          - events:PutRule
+          - events:PutTargets
+        effect: Allow
+        resource:
+          - arn:aws:events:us-east-1:{{account_id}}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
+    version: '2012-10-17'
+  policy_name: StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8

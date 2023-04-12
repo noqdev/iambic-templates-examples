@@ -1,0 +1,16 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: AWSServiceRoleForAmazonElasticFileSystem
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: elasticfilesystem.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/AmazonElasticFileSystemServiceRolePolicy
+  path: /aws-service-role/elasticfilesystem.amazonaws.com/
+  role_name: AWSServiceRoleForAmazonElasticFileSystem

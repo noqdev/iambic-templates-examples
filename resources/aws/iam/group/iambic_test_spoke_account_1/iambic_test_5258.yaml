@@ -1,0 +1,17 @@
+template_type: NOQ::AWS::IAM::Group
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambic_test_5258
+properties:
+  group_name: iambic_test_5258
+  inline_policies:
+    - policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:initialpolicy
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  path: /iambic_test/

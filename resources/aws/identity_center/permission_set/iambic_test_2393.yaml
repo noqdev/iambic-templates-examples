@@ -1,0 +1,6 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+identifier: iambic_test_2393
+properties:
+  name: iambic_test_2393
+  description: Updated description.
+  session_duration: PT1H

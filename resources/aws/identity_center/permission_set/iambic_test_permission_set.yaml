@@ -1,0 +1,26 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+access_rules:
+  - included_orgs:
+      - o-8t0mt0ybdd
+    users:
+      - curtis@noq.dev
+  - included_accounts:
+      - iambic_test_org_account
+    groups:
+      - admin
+    included_orgs:
+      - o-8t0mt0ybdd
+identifier: iambic_test_permission_set
+properties:
+  name: iambic_test_permission_set
+  description: Permission set for testing IAMbic
+  inline_policy:
+    statement:
+      - action:
+          - '*'
+        effect: Deny
+        resource:
+          - '*'
+  managed_policies:
+    - arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  session_duration: PT1H
