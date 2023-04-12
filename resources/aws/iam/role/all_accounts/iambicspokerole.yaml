@@ -78,7 +78,7 @@ properties:
             - secretsmanager:PutSecretValue
           effect: Allow
           resource:
-            - arn:aws:secretsmanager:us-east-1:{{account_id}}:secret:iambic-config-secrets-1648de15-0360-46ca-8461-e3e52b4a5520-psIg6N
+            - arn:aws:secretsmanager:us-east-1:{{account_id}}:secret:iambic-config-secrets-*
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
   role_name: IambicSpokeRole
