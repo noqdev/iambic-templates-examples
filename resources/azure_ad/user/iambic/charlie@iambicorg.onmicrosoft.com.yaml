@@ -1,0 +1,6 @@
+template_type: NOQ::AzureAD::User
+idp_name: iambic
+properties:
+  display_name: Charlie
+  user_id: 99c05db8-73de-4457-87df-d492c759ec6c
+  username: charlie@iambicorg.onmicrosoft.com

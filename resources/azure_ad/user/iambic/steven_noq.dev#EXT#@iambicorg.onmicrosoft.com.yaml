@@ -1,0 +1,7 @@
+template_type: NOQ::AzureAD::User
+idp_name: iambic
+properties:
+  display_name: Steven Moy
+  given_name: Steven
+  user_id: 09cf7a5b-3d22-4355-be8f-cfd13d2b57a5
+  username: steven_noq.dev#EXT#@iambicorg.onmicrosoft.com

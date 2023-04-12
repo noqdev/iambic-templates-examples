@@ -1,0 +1,6 @@
+template_type: NOQ::AzureAD::User
+idp_name: iambic
+properties:
+  display_name: Bob
+  user_id: 618df32b-6550-4ba2-a753-5ed726d7b8d6
+  username: bob@iambicorg.onmicrosoft.com

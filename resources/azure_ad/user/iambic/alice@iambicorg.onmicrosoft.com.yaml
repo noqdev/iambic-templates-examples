@@ -1,0 +1,6 @@
+template_type: NOQ::AzureAD::User
+idp_name: iambic
+properties:
+  display_name: Alice
+  user_id: 32e3411a-5b0b-4a90-98aa-f7d698bfbc9b
+  username: alice@iambicorg.onmicrosoft.com
