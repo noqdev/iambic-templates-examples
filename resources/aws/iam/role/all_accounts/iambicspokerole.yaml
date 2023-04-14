@@ -15,7 +15,6 @@ properties:
     - policy_name: base_permissions
       statement:
         - action:
-            - ec2:Describe*
             - iam:*
             - identitystore:*
             - organizations:describe*
