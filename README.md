@@ -18,7 +18,7 @@ IAMbic has a convention to import assets into `resources/<plugin-name>/<resource
 
 ## Azure Active Directory
 
-* [Group](TBD)
+* [Group](https://github.com/noqdev/iambic-templates-examples/blob/main/resources/azure_ad/group/iambic/engineering.yaml)
 * [User](https://github.com/noqdev/iambic-templates-examples/blob/main/resources/azure_ad/user/iambic/alice%40iambicorg.onmicrosoft.com.yaml)
 
 ## Google Workspace
