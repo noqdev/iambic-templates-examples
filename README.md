@@ -36,3 +36,7 @@ IAMbic has a convention to import assets into `resources/<plugin-name>/<resource
 ## Periodic Import
 
 This Github [workflow](https://github.com/noqdev/iambic-templates-examples/blob/main/.github/workflows/iambic-import.yml) runs the `iambic import` flow via IAMbic bundled Github integration. This make sure any out-of-band resources are imported back into IAMBIC templates git repository.
+
+# GitHub Pull Request Workflow
+
+We want to delegate the ask of making PR to obtain IAM request to developer, so IAMbic comes with a Github Pull Request workflow. Checkout this [PR](https://github.com/noqdev/iambic-templates-examples/pull/3) Someone made the request to modify the role definition, and IAMbic Github Integration automatically runs `iambic plan` and comment the effect of this change within the PR.
