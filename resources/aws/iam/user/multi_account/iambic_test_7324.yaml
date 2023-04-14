@@ -1,6 +1,5 @@
 template_type: NOQ::AWS::IAM::User
 included_accounts:
-  - iambic_test_spoke_account_2
   - iambic_test_spoke_account_3
 identifier: iambic_test_7324
 properties:
