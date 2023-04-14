@@ -32,6 +32,12 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
+          aws: arn:aws:iam::{{account_id}}:role/iambic_github_app_lambda_execution
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
           aws: arn:aws:iam::442632209887:role/iambic_github_app_lambda_execution
       - action:
           - sts:AssumeRole
@@ -66,6 +72,6 @@ properties:
   role_name: IambicHubRole
   tags:
     - key: noq-authorized
-      value: will@noq.dev:curtis@noq.dev:matt@noq.dev:steven@noq.dev:kayizzi.ctr@noq.dev
+      value: will@noq.dev:curtis@noq.dev:matt@noq.dev:steven@noq.dev:kayizzi.ctr@noq.dev:jonathan@noq.dev
     - key: noq-authorized-cli-only
       value: ''

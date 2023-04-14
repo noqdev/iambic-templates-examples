@@ -1,5 +1,6 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
+  - iambic_test_org_account
   - iambic_test_spoke_account_1
 identifier: iambic_github_app_lambda_execution
 properties:
@@ -12,7 +13,43 @@ properties:
           service: lambda.amazonaws.com
     version: '2012-10-17'
   inline_policies:
-    - policy_name: github-app
+    - excluded_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: github-app
+      statement:
+        - action:
+            - logs:CreateLogGroup
+          effect: Allow
+          resource:
+            - arn:aws:logs:*:{{account_id}}:*
+          sid: CreateLogGroup
+        - action:
+            - secretsmanager:GetSecretValue
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:{{account_id}}:secret:iambic/github-app-private-key
+            - arn:aws:secretsmanager:*:{{account_id}}:secret:iambic/github-app-private-key-*
+            - arn:aws:secretsmanager:*:{{account_id}}:secret:iambic/github-app-webhook-secret
+            - arn:aws:secretsmanager:*:{{account_id}}:secret:iambic/github-app-webhook-secret-*
+          sid: SecretReading
+        - action:
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          effect: Allow
+          resource:
+            - arn:aws:logs:*:{{account_id}}:log-group:/aws/lambda/iambic_github_app_webhook*:*
+          sid: LogEvents
+        - action: sts:AssumeRole
+          effect: Allow
+          resource: arn:aws:iam::{{account_id}}:role/IambicHubRole
+      version: '2012-10-17'
+    - excluded_accounts:
+        - iambic_test_org_account
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: github-app
       statement:
         - action:
             - logs:CreateLogGroup
