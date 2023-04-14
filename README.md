@@ -30,3 +30,9 @@ IAMbic has a convention to import assets into `resources/<plugin-name>/<resource
 * [Application](https://github.com/noqdev/iambic-templates-examples/blob/main/resources/okta/app/development/test_application.yaml)
 * [Group](https://github.com/noqdev/iambic-templates-examples/blob/main/resources/okta/group/development/product.yaml)
 * [User](https://github.com/noqdev/iambic-templates-examples/blob/main/resources/okta/user/development/curtis%40noq.dev.yaml)
+
+# Automation
+
+## Periodic Import
+
+This Github [workflow](https://github.com/noqdev/iambic-templates-examples/blob/main/.github/workflows/iambic-import.yml) runs the `iambic import` flow via IAMbic bundled Github integration. This make sure any out-of-band resources are imported back into IAMBIC templates git repository.
