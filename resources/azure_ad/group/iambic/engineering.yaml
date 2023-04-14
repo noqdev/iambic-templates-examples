@@ -1,0 +1,17 @@
+template_type: NOQ::AzureAD::Group
+idp_name: iambic
+properties:
+  name: engineering
+  description: engineering
+  group_id: ce101a63-6036-4810-a67d-6be575282a30
+  mail_nickname: 82b7f2af-b
+  members:
+    - name: alice@iambicorg.onmicrosoft.com
+      data_type: user
+      id: 32e3411a-5b0b-4a90-98aa-f7d698bfbc9b
+    - name: bob@iambicorg.onmicrosoft.com
+      data_type: user
+      id: 618df32b-6550-4ba2-a753-5ed726d7b8d6
+    - name: charlie@iambicorg.onmicrosoft.com
+      data_type: user
+      id: 99c05db8-73de-4457-87df-d492c759ec6c
