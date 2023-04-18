@@ -1,6 +1,4 @@
 template_type: NOQ::AWS::IAM::User
-included_accounts:
-  - '*'
 identifier: '{{account_name}}_cloudwatch_log_reader'
 properties:
   managed_policies:
