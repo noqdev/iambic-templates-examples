@@ -49,6 +49,6 @@ properties:
   role_name: iambic_image_builder
   tags:
     - key: noq-authorized
-      value: steven@noq.dev:curtis@noq.dev:will@noq.dev
+      value: steven@noq.dev:curtis@noq.dev:will@noq.dev:jonathan@noq.dev
     - key: test
       value: a

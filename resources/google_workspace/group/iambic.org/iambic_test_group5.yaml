@@ -1,0 +1,9 @@
+template_type: NOQ::GoogleWorkspace::Group
+properties:
+  name: iambic-test-group5
+  description: ''
+  domain: iambic.org
+  email: iambic-test-group5@iambic.org
+  members:
+    - email: jonathan@iambic.org
+      role: OWNER
