@@ -1,0 +1,6 @@
+template_type: NOQ::AWS::IAM::User
+identifier: '{{account_name}}_cloudwatch_log_reader'
+properties:
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/CloudWatchApplicationInsightsReadOnlyAccess
+  user_name: '{{account_name}}_cloudwatch_log_reader'
