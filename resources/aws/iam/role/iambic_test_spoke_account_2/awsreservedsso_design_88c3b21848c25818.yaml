@@ -13,7 +13,7 @@ properties:
             SAML:aud: https://signin.aws.amazon.com/saml
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{account_id}}:saml-provider/AWSSSO_0395132c01cde359_DO_NOT_DELETE
+          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_0395132c01cde359_DO_NOT_DELETE
     version: '2012-10-17'
   inline_policies:
     - policy_name: AwsSSOInlinePolicy
@@ -30,9 +30,9 @@ properties:
             - '*'
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/AWSHealthFullAccess
-    - policy_arn: arn:aws:iam::{{account_id}}:policy/base_deny
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/base_deny
   max_session_duration: 43200
   path: /aws-reserved/sso.amazonaws.com/
   permissions_boundary:
-    policy_arn: arn:aws:iam::{{account_id}}:policy/base_permission_boundary
+    policy_arn: arn:aws:iam::{{var.account_id}}:policy/base_permission_boundary
   role_name: AWSReservedSSO_design_88c3b21848c25818

@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_org_account
-identifier: '{{account_name}}_admin'
+identifier: '{{var.account_name}}_admin'
 properties:
   assume_role_policy_document:
     statement:
@@ -48,7 +48,7 @@ properties:
     version: '2012-10-17'
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
-  role_name: '{{account_name}}_admin'
+  role_name: '{{var.account_name}}_admin'
   tags:
     - key: noq-authorized
       value: curtis@noq.dev:will@noq.dev:steven@noq.dev:engineering@noq.dev

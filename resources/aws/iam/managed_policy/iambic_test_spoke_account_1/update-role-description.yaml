@@ -7,7 +7,7 @@ properties:
     statement:
       - action: iam:UpdateRoleDescription
         effect: Allow
-        resource: arn:aws:iam::{{account_id}}:role/iambic_itest_for_github_cicd
+        resource: arn:aws:iam::{{var.account_id}}:role/iambic_itest_for_github_cicd
         sid: VisualEditor0
     version: '2012-10-17'
   policy_name: update-role-description

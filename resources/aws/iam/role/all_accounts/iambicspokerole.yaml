@@ -51,7 +51,7 @@ properties:
       statement:
         - action: sqs:DeleteMessage
           effect: Allow
-          resource: arn:aws:sqs:us-east-1:{{account_id}}:iambic-itest-iam-mutation-events
+          resource: arn:aws:sqs:us-east-1:{{var.account_id}}:iambic-itest-iam-mutation-events
           sid: VisualEditor0
       version: '2012-10-17'
     - included_accounts:
@@ -67,17 +67,17 @@ properties:
             - secretsmanager:listsecretversionids
           effect: Allow
           resource:
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/github-token-iambic-templates-itest
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/github-token-iambic-templates-itest-*
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/google
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/google-*
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/iambic-full
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/iambic-full-*
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:dev/iambic_itest_secret*
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/google-only-secret
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/google-only-secret-*
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/okta-only-secret
-            - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/okta-only-secret-*
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/github-token-iambic-templates-itest
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/github-token-iambic-templates-itest-*
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/google
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/google-*
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/iambic-full
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/iambic-full-*
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:dev/iambic_itest_secret*
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:test/google-only-secret
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:test/google-only-secret-*
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:test/okta-only-secret
+            - arn:aws:secretsmanager:us-west-2:{{var.account_id}}:secret:test/okta-only-secret-*
       version: '2012-10-17'
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess

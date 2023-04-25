@@ -4,7 +4,7 @@ included_accounts:
 identifier: iambic_github_cicid_itest
 properties:
   managed_policies:
-    - policy_arn: arn:aws:iam::{{account_id}}:policy/update-role-description
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/update-role-description
   path: /engineering/2/
   tags:
     - key: AKIAWODXPQXP7IB6CMVG

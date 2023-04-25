@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
-identifier: '{{account_name}}_iambic_testing_role'
+identifier: '{{var.account_name}}_iambic_testing_role'
 properties:
-  description: IAMbic test role on {{account_name}}
+  description: IAMbic test role on {{var.account_name}}
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRole
@@ -36,4 +36,4 @@ properties:
   path: /iambic_test/
   permissions_boundary:
     policy_arn: arn:aws:iam::aws:policy/AWSDirectConnectReadOnlyAccess
-  role_name: '{{account_name}}_iambic_testing_role'
+  role_name: '{{var.account_name}}_iambic_testing_role'

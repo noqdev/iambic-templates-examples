@@ -11,7 +11,7 @@ properties:
           - states:StartExecution
         effect: Allow
         resource:
-          - arn:aws:states:us-east-1:{{account_id}}:stateMachine:MyStateMachine
+          - arn:aws:states:us-east-1:{{var.account_id}}:stateMachine:MyStateMachine
       - action:
           - states:DescribeExecution
           - states:StopExecution
@@ -23,6 +23,6 @@ properties:
           - events:PutTargets
         effect: Allow
         resource:
-          - arn:aws:events:us-east-1:{{account_id}}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
+          - arn:aws:events:us-east-1:{{var.account_id}}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
     version: '2012-10-17'
   policy_name: StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8

@@ -15,7 +15,7 @@ properties:
             token.actions.githubusercontent.com:sub: repo:noqdev/iambic:*
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{account_id}}:oidc-provider/token.actions.githubusercontent.com
+          federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com
       - action:
           - sts:AssumeRole
           - sts:TagSession
@@ -43,7 +43,7 @@ properties:
             - ecr-public:UploadLayerPart
           effect: Allow
           resource:
-            - arn:aws:ecr-public::{{account_id}}:repository/iambic
+            - arn:aws:ecr-public::{{var.account_id}}:repository/iambic
           sid: ManageRepositoryContents
       version: '2012-10-17'
   role_name: iambic_image_builder

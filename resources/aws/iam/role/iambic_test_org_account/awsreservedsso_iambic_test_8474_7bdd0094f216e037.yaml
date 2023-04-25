@@ -14,7 +14,7 @@ properties:
             SAML:aud: https://signin.aws.amazon.com/saml
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{account_id}}:saml-provider/AWSSSO_e9a16bb892daee04_DO_NOT_DELETE
+          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_e9a16bb892daee04_DO_NOT_DELETE
     version: '2012-10-17'
   inline_policies:
     - policy_name: AwsSSOInlinePolicy
@@ -34,5 +34,5 @@ properties:
   max_session_duration: 43200
   path: /aws-reserved/sso.amazonaws.com/
   permissions_boundary:
-    policy_arn: arn:aws:iam::{{account_id}}:policy/base_permission_boundary
+    policy_arn: arn:aws:iam::{{var.account_id}}:policy/base_permission_boundary
   role_name: AWSReservedSSO_iambic_test_8474_7bdd0094f216e037

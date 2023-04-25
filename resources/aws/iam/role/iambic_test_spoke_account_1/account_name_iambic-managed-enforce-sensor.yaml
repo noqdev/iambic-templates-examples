@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_spoke_account_1
-identifier: '{{account_name}}_iambic-managed-enforce-sensor'
+identifier: '{{var.account_name}}_iambic-managed-enforce-sensor'
 properties:
   description: read-only-description
   assume_role_policy_document:
@@ -11,4 +11,4 @@ properties:
         principal:
           service: ec2.amazonaws.com
     version: '2012-10-17'
-  role_name: '{{account_name}}_iambic-managed-enforce-sensor'
+  role_name: '{{var.account_name}}_iambic-managed-enforce-sensor'
