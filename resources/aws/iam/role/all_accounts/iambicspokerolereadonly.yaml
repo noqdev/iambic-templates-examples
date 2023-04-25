@@ -12,7 +12,51 @@ properties:
           aws: arn:aws:iam::580605962305:role/IambicHubRole
     version: '2012-10-17'
   inline_policies:
-    - policy_name: base_permissions
+    - excluded_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: base_permissions
+      statement:
+        - action:
+            - iam:Get*
+            - iam:List*
+            - identitystore:Describe*
+            - identitystore:Get*
+            - identitystore:List*
+            - organizations:describe*
+            - organizations:list*
+            - sso:Describe*
+            - sso:Get*
+            - sso:List*
+            - sso:Search*
+          effect: Allow
+          resource:
+            - '*'
+        - action:
+            - secretsmanager:CreateSecret
+            - secretsmanager:GetSecretValue
+            - secretsmanager:PutSecretValue
+            - secretsmanager:describesecret
+            - secretsmanager:listsecrets
+            - secretsmanager:listsecretversionids
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:*:secret:iambic-config-secrets-*
+        - action:
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+            - sqs:GetQueueUrl
+            - sqs:ReceiveMessage
+            - sqs:SendMessage
+          effect: Allow
+          resource:
+            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue
+          sid: SqsWriteAccessForResourceMonitoring
+      version: '2012-10-17'
+    - excluded_accounts:
+        - iambic_test_org_account
+      policy_name: base_permissions
       statement:
         - action:
             - iam:Get*

@@ -20,11 +20,30 @@ properties:
             - identitystore:*
             - organizations:describe*
             - organizations:list*
-            - secretsmanager:CreateSecret
             - sso:*
           effect: Allow
           resource:
             - '*'
+        - action:
+            - secretsmanager:CreateSecret
+            - secretsmanager:GetSecretValue
+            - secretsmanager:PutSecretValue
+            - secretsmanager:describesecret
+            - secretsmanager:listsecrets
+            - secretsmanager:listsecretversionids
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:*:secret:iambic-config-secrets-*
+        - action:
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+            - sqs:GetQueueUrl
+            - sqs:ReceiveMessage
+            - sqs:SendMessage
+          effect: Allow
+          resource:
+            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue
+          sid: SqsWriteAccessForResourceMonitoring
       version: '2012-10-17'
     - included_accounts:
         - iambic_test_spoke_account_1
@@ -60,25 +79,6 @@ properties:
             - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/okta-only-secret
             - arn:aws:secretsmanager:us-west-2:{{account_id}}:secret:test/okta-only-secret-*
       version: '2012-10-17'
-    - included_accounts:
-        - iambic_test_org_account
-      policy_name: organization_access
-      statement:
-        - action:
-            - sts:AssumeRole
-            - sts:TagSession
-          effect: Allow
-          resource: '*'
-    - included_accounts:
-        - iambic_test_org_account
-      policy_name: read_iambic_secrets
-      statement:
-        - action:
-            - secretsmanager:GetSecretValue
-            - secretsmanager:PutSecretValue
-          effect: Allow
-          resource:
-            - arn:aws:secretsmanager:us-east-1:{{account_id}}:secret:iambic-config-secrets-*
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
   role_name: IambicSpokeRole
