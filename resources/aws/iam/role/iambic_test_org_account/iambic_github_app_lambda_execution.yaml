@@ -1,6 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_org_account
+  - iambic_test_spoke_account_1
 identifier: iambic_github_app_lambda_execution
 properties:
   description: Github App Lambda Execution
@@ -12,7 +13,11 @@ properties:
           service: lambda.amazonaws.com
     version: '2012-10-17'
   inline_policies:
-    - policy_name: github-app
+    - excluded_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: github-app
       statement:
         - action:
             - logs:CreateLogGroup
@@ -39,5 +44,37 @@ properties:
         - action: sts:AssumeRole
           effect: Allow
           resource: arn:aws:iam::{{var.account_id}}:role/IambicHubRole
+      version: '2012-10-17'
+    - excluded_accounts:
+        - iambic_test_org_account
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: github-app
+      statement:
+        - action:
+            - logs:CreateLogGroup
+          effect: Allow
+          resource:
+            - arn:aws:logs:us-west-2:{{var.account_id}}:*
+          sid: VisualEditor2
+        - action:
+            - secretsmanager:GetSecretValue
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-private-key
+            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-private-key-*
+            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-webhook-secret
+            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-webhook-secret-*
+          sid: VisualEditor0
+        - action:
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          effect: Allow
+          resource:
+            - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:/aws/lambda/iambic_github_app_webhook:*
+          sid: VisualEditor1
+        - action: sts:AssumeRole
+          effect: Allow
+          resource: arn:aws:iam::580605962305:role/IambicHubRole
       version: '2012-10-17'
   role_name: iambic_github_app_lambda_execution
