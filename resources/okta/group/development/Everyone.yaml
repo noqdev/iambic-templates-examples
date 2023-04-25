@@ -41,6 +41,7 @@ properties:
     - username: iambic_functional_test_user_789429@example.com
     - username: iambic_functional_test_user_798738@example.com
     - username: iambic_functional_test_user_804185@example.com
+    - username: iambic_functional_test_user_807008@example.com
     - username: iambic_functional_test_user_827013@example.com
     - username: iambic_functional_test_user_85503@example.com
     - username: iambic_functional_test_user_867289@example.com
@@ -51,6 +52,8 @@ properties:
     - username: iambic_functional_test_user_942244@example.com
     - username: iambic_functional_test_user_966560@example.com
     - username: iambic_functional_test_user_969464@example.com
+    - username: iambic_functional_test_user_977537@example.com
+    - username: iambic_functional_test_user_996080@example.com
     - username: testuser@example.com
     - username: user1@example.com
     - username: user2@example.com

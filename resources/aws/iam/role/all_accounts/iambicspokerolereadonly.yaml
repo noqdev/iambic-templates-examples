@@ -54,8 +54,10 @@ properties:
             - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue
           sid: SqsWriteAccessForResourceMonitoring
       version: '2012-10-17'
-    - excluded_accounts:
-        - iambic_test_org_account
+    - included_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
       policy_name: base_permissions
       statement:
         - action:
