@@ -45,10 +45,8 @@ properties:
           effect: Allow
           resource: arn:aws:iam::{{var.account_id}}:role/IambicHubRole
       version: '2012-10-17'
-    - excluded_accounts:
-        - iambic_test_org_account
-        - iambic_test_spoke_account_2
-        - iambic_test_spoke_account_3
+    - included_accounts:
+        - iambic_test_spoke_account_1
       policy_name: github-app
       statement:
         - action:
