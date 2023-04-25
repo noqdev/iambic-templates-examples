@@ -22,5 +22,5 @@ properties:
             - sqs:ReceiveMessage
           effect: Allow
           resource:
-            - arn:aws:sqs:us-east-1:{{account_id}}:IAMbicChangeDetectionQueue
+            - arn:aws:sqs:us-east-1:{{var.account_id}}:IAMbicChangeDetectionQueue
   role_name: IambicSpokeRole_LOCAL_TEST

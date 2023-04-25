@@ -11,8 +11,8 @@ properties:
           service: states.amazonaws.com
     version: '2012-10-17'
   managed_policies:
-    - policy_arn: arn:aws:iam::{{account_id}}:policy/service-role/LambdaInvokeScopedAccessPolicy-261cdb65-8e94-4663-bd63-033f94f6170a
-    - policy_arn: arn:aws:iam::{{account_id}}:policy/service-role/StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8
-    - policy_arn: arn:aws:iam::{{account_id}}:policy/service-role/XRayAccessPolicy-b1c04882-c1b3-4585-9198-7beca1ff4ff6
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/LambdaInvokeScopedAccessPolicy-261cdb65-8e94-4663-bd63-033f94f6170a
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/XRayAccessPolicy-b1c04882-c1b3-4585-9198-7beca1ff4ff6
   path: /service-role/
   role_name: StepFunctions-MyStateMachine-role-34564696

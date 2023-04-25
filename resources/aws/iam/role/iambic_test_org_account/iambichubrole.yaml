@@ -18,21 +18,21 @@ properties:
               - repo:noqdev/iambic:*
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{account_id}}:oidc-provider/token.actions.githubusercontent.com
+          federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com
       - action:
           - sts:AssumeRole
           - sts:TagSession
         effect: Allow
         principal:
           aws:
-            - arn:aws:iam::{{account_id}}:role/test_org_admin
-            - arn:aws:iam::{{account_id}}:role/{{account_name}}_admin
+            - arn:aws:iam::{{var.account_id}}:role/test_org_admin
+            - arn:aws:iam::{{var.account_id}}:role/{{var.account_name}}_admin
       - action:
           - sts:AssumeRole
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::{{account_id}}:role/iambic_github_app_lambda_execution
+          aws: arn:aws:iam::{{var.account_id}}:role/iambic_github_app_lambda_execution
       - action:
           - sts:AssumeRole
           - sts:TagSession

@@ -34,6 +34,6 @@ properties:
             - secretsmanager:GetSecretValue
           effect: Allow
           resource:
-            - arn:aws:secretsmanager:us-east-1:{{account_id}}:secret:iambic-config-secrets-test-2-vfiRX8
+            - arn:aws:secretsmanager:us-east-1:{{var.account_id}}:secret:iambic-config-secrets-test-2-vfiRX8
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
