@@ -1,0 +1,11 @@
+template_type: NOQ::Okta::User
+idp_name: development
+properties:
+  profile:
+    email: iambic_functional_test_user_413476@example.com
+    firstName: TestNameChange
+    lastName: iambic_functional_test_user_413476
+    login: iambic_functional_test_user_413476@example.com
+  status: deprovisioned
+  user_id: 00u99r4wa6ii8kJX55d7
+  username: iambic_functional_test_user_413476@example.com
