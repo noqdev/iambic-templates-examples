@@ -1,0 +1,43 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: "{{var.account_name}}_iambic_test_role"
+included_accounts:
+  - "*"
+properties:
+  description: IAMbic test role on {{var.account_name}}
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Deny
+        principal:
+          service: ec2.amazonaws.com
+  inline_policies:
+    - policy_name: s3-access
+      statement:
+        - excluded_accounts: # Include the policy on the role across all accounts, except iambic_test_org_account
+            - iambic_test_org_account
+          action:
+            - s3:GetObject
+          effect: Allow
+          resource: "arn:aws:s3:::awsexamplebucket1-{{var.account_name}}/*"
+        - included_accounts: # Only include the policy statement on iambic_test_spoke_account_1
+            - iambic_test_spoke_account_1
+          action:
+            - s3:DeleteObject
+          effect: Allow
+          resource: "arn:aws:s3:::awsexamplebucket1-{{var.account_name}}/*"
+        - included_accounts:
+            - "*"
+          # Include the policy statement on all accounts except iambic_test_org_account and iambic_test_spoke_account_3
+          excluded_accounts:
+             - iambic_test_org_account
+             - iambic_test_spoke_account_3
+          action:
+            - s3:ListAllMyBuckets
+          effect: Allow
+          resource: "*"
+  managed_policies:
+    - arn:aws:iam::aws:policy/job-function/SupportUser
+  path: /iambic_test/
+  permissions_boundary:
+    policy_arn: arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+  role_name: "{{var.account_name}}_iambic_test_role"
