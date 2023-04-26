@@ -36,7 +36,7 @@ properties:
           effect: Allow
           resource: "*"
   managed_policies:
-    - arn:aws:iam::aws:policy/job-function/SupportUser
+    - policy_arn: arn:aws:iam::aws:policy/job-function/SupportUser
   path: /iambic_test/
   permissions_boundary:
     policy_arn: arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
