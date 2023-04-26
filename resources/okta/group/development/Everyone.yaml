@@ -6,6 +6,7 @@ properties:
   group_id: 00g7s1q1rcVQpAbVI5d7
   members:
     - username: curtis@noq.dev
+    - username: iambic_functional_test_user_112444@example.com
     - username: iambic_functional_test_user_145124@example.com
     - username: iambic_functional_test_user_159485@example.com
     - username: iambic_functional_test_user_167427@example.com
@@ -17,6 +18,7 @@ properties:
     - username: iambic_functional_test_user_328389@example.com
     - username: iambic_functional_test_user_347351@example.com
     - username: iambic_functional_test_user_386997@example.com
+    - username: iambic_functional_test_user_403297@example.com
     - username: iambic_functional_test_user_421988@example.com
     - username: iambic_functional_test_user_44976@example.com
     - username: iambic_functional_test_user_468978@example.com

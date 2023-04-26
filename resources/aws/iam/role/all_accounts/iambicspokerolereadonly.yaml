@@ -3,10 +3,8 @@ identifier: IambicSpokeRoleReadOnly
 properties:
   description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
   assume_role_policy_document:
-    - excluded_accounts:
-        - iambic_test_spoke_account_1
-        - iambic_test_spoke_account_2
-        - iambic_test_spoke_account_3
+    - included_accounts:
+        - iambic_test_org_account
       statement:
         - action:
             - sts:AssumeRole
