@@ -6,6 +6,7 @@ properties:
     statement:
       - action:
           - sts:AssumeRole
+          - sts:SetSourceIdentity
           - sts:TagSession
         effect: Allow
         principal:
