@@ -21,6 +21,7 @@ properties:
           federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com
       - action:
           - sts:AssumeRole
+          - sts:SetSourceIdentity
           - sts:TagSession
         effect: Allow
         principal:
@@ -56,6 +57,7 @@ properties:
     - policy_name: assume_spoke_role
       statement:
         - action:
+            - sts:SetSourceIdentity
             - sts:assumerole
           effect: Allow
           resource:
