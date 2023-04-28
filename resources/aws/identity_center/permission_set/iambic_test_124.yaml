@@ -1,0 +1,12 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+access_rules:
+  - included_orgs:
+      - o-8t0mt0ybdd
+    users:
+      - curtis@noq.dev
+      - iambic_test_user@iambic.org
+identifier: iambic_test_124
+properties:
+  name: iambic_test_124
+  description: This was created by a functional test.
+  session_duration: PT1H
