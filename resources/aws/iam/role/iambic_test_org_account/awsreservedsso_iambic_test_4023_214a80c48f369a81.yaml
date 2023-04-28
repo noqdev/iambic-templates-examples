@@ -1,0 +1,21 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: AWSReservedSSO_iambic_test_4023_214a80c48f369a81
+properties:
+  description: This was created by a functional test.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRoleWithSAML
+          - sts:TagSession
+        condition:
+          StringEquals:
+            SAML:aud: https://signin.aws.amazon.com/saml
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_e9a16bb892daee04_DO_NOT_DELETE
+    version: '2012-10-17'
+  max_session_duration: 43200
+  path: /aws-reserved/sso.amazonaws.com/
+  role_name: AWSReservedSSO_iambic_test_4023_214a80c48f369a81
