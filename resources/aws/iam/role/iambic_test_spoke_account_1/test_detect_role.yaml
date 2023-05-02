@@ -22,7 +22,8 @@ properties:
             - sqs:GetQueueAttributes
           effect: Deny
           resource: arn:aws:sqs:us-east-1:{{var.account_id}}:fakequeue
-          condition: IAM:ResourceTag/status:terminate
+          condition:
+            "IAM:ResourceTag/status": "terminate"
   role_name: test_detect_role
   tags:
     - key: test-tag
