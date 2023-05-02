@@ -1,0 +1,18 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - '*'
+identifier: deny-pii-access
+properties:
+  policy_document:
+    statement:
+      - action:
+        - s3:GetObject
+          s3:PutObject
+        effect: Deny
+        resource: arn:aws:s3:::mybucket
+        condition:
+          StringLike:
+            "s3:prefix":
+              - "pii/*"
+    version: '2012-10-17'
+  policy_name: deny-pii-access
