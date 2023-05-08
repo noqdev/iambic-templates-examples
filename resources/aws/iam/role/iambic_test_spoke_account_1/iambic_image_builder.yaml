@@ -52,3 +52,5 @@ properties:
       value: steven@noq.dev:curtis@noq.dev:will@noq.dev:jonathan@noq.dev
     - key: test
       value: a
+    - key: purpose
+      value: build test images

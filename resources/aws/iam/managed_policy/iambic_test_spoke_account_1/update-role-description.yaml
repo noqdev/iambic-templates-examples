@@ -16,3 +16,5 @@ properties:
       value: steven@noq.dev
     - key: purpose
       value: to test out-of-band change because iambic detect ignore iambic change on cloudtrail
+    - key: cost_center
+      value: engineering
