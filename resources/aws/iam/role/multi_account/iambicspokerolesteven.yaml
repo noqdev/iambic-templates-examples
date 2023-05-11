@@ -1,0 +1,58 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+  - iambic_test_spoke_account_2
+  - iambic_test_spoke_account_3
+identifier: IambicSpokeRoleSteven
+properties:
+  description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:SetSourceIdentity
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: AROAYOLWP5BAV3ETPQMHT
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: base_permissions
+      statement:
+        - action:
+            - ec2:Describe*
+            - iam:*
+            - identitystore:*
+            - organizations:describe*
+            - organizations:list*
+            - sso:*
+          effect: Allow
+          resource:
+            - '*'
+        - action:
+            - secretsmanager:CreateSecret
+            - secretsmanager:GetSecretValue
+            - secretsmanager:PutSecretValue
+            - secretsmanager:describesecret
+            - secretsmanager:listsecrets
+            - secretsmanager:listsecretversionids
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:*:secret:iambic-config-secrets-*
+        - action:
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+            - sqs:GetQueueUrl
+            - sqs:ReceiveMessage
+            - sqs:SendMessage
+          effect: Allow
+          resource:
+            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue
+          sid: SqsWriteAccessForResourceMonitoring
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
+  role_name: IambicSpokeRoleSteven
+  tags:
+    - key: team
+      value: engineering

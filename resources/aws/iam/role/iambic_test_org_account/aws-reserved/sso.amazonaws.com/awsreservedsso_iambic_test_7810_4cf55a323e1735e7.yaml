@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
-  - iambic_test_spoke_account_2
-identifier: AWSReservedSSO_iambic_test_4023_d55a6b1a26e37d39
+  - iambic_test_org_account
+identifier: AWSReservedSSO_iambic_test_7810_4cf55a323e1735e7
 properties:
   description: This was created by a functional test.
   assume_role_policy_document:
@@ -14,8 +14,10 @@ properties:
             SAML:aud: https://signin.aws.amazon.com/saml
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_0395132c01cde359_DO_NOT_DELETE
+          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_e9a16bb892daee04_DO_NOT_DELETE
     version: '2012-10-17'
   max_session_duration: 43200
   path: /aws-reserved/sso.amazonaws.com/
-  role_name: AWSReservedSSO_iambic_test_4023_d55a6b1a26e37d39
+  permissions_boundary:
+    policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
+  role_name: AWSReservedSSO_iambic_test_7810_4cf55a323e1735e7

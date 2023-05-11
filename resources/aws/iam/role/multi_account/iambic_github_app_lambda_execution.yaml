@@ -13,10 +13,8 @@ properties:
           service: lambda.amazonaws.com
     version: '2012-10-17'
   inline_policies:
-    - excluded_accounts:
-        - iambic_test_spoke_account_1
-        - iambic_test_spoke_account_2
-        - iambic_test_spoke_account_3
+    - included_accounts:
+        - iambic_test_org_account
       policy_name: github-app
       statement:
         - action:
