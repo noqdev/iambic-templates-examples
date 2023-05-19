@@ -1,6 +1,7 @@
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
 access_rules:
-  - groups:
+  - expires_at: in 5 years
+    groups:
       - engineering
     included_orgs:
       - o-8t0mt0ybdd
