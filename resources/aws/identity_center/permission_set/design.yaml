@@ -1,6 +1,6 @@
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
 access_rules:
-  - expires_at: in 5 years
+  - expires_at: 2028-05-19T14:17 UTC
     groups:
       - engineering
     included_orgs:
@@ -18,10 +18,10 @@ properties:
         effect: Deny
         resource:
           - '*'
-      - expires_at: in 10 years
-        action:
+      - action:
           - ec2:list*
         effect: Deny
+        expires_at: 2033-05-19T14:17 UTC
         resource:
           - '*'
   managed_policies:
