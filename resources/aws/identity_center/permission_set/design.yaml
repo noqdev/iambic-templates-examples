@@ -1,6 +1,7 @@
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
 access_rules:
-  - groups:
+  - expires_at: 2028-05-19T14:17 UTC
+    groups:
       - engineering
     included_orgs:
       - o-8t0mt0ybdd
@@ -20,6 +21,7 @@ properties:
       - action:
           - ec2:list*
         effect: Deny
+        expires_at: 2033-05-19T14:17 UTC
         resource:
           - '*'
   managed_policies:
