@@ -18,7 +18,8 @@ properties:
         effect: Deny
         resource:
           - '*'
-      - action:
+      - expires_at: in 10 years
+        action:
           - ec2:list*
         effect: Deny
         resource:
