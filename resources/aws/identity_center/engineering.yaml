@@ -1,6 +1,6 @@
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
 access_rules:
-  - expires_at: in 4 years
+  - expires_at: 2027-05-19T14:37 UTC
     groups:
       - engineering
 identifier: engineering
@@ -16,15 +16,15 @@ properties:
         effect: Deny
         resource:
           - '*'
-      - expires_at: in 6 years
-        action:
+      - action:
           - ec2:list*
         effect: Deny
+        expires_at: 2029-05-19T14:37 UTC
         resource:
           - '*'
   managed_policies:
     - arn: arn:aws:iam::aws:policy/AWSHealthFullAccess
-      expires_at: in 5 years
+      expires_at: 2028-05-19T14:37 UTC
   permissions_boundary:
     customer_managed_policy_reference:
       name: base_permission_boundary
