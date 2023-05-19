@@ -1,4 +1,5 @@
 template_type: NOQ::GoogleWorkspace::Group
+deleted: true
 properties:
   name: iambic-testing-group-jonathan
   description: ''
