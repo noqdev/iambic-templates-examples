@@ -35,7 +35,6 @@ properties:
         effect: Deny
         resource:
           - arn:aws:ec2:*:*:instance/*
-  policy_id: p-7t0nhw7s
   policy_name: PreventIMDSV1
   targets:
     roots:

@@ -15,7 +15,6 @@ properties:
         effect: Deny
         resource:
           - '*'
-  policy_id: p-0rwoirln
   policy_name: DontRootMe
   targets:
     roots:

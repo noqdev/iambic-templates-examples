@@ -31,7 +31,6 @@ properties:
         effect: Deny
         resource:
           - '*'
-  policy_id: p-dbtm08da
   policy_name: PreventDisableSecurityServices
   targets:
     roots:

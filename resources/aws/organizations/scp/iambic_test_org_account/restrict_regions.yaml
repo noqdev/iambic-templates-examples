@@ -34,7 +34,6 @@ properties:
           - wellarchitected:*
         resource:
           - '*'
-  policy_id: p-g9vrcqin
   policy_name: RestrictRegions
   targets:
     roots:
