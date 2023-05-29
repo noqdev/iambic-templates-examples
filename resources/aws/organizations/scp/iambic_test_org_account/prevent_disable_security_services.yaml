@@ -1,0 +1,38 @@
+template_type: NOQ::AWS::Organizations::SCP
+account_id: '580605962305'
+iambic_managed: enforced
+identifier: PreventDisableSecurityServices
+org_id: o-8t0mt0ybdd
+properties:
+  policy_document:
+    statement:
+      - action:
+          - access-analyzer:DeleteAnalyzer
+          - ec2:DisableEbsEncryptionByDefault
+          - events:DeleteRule
+          - events:DisableRule
+          - events:RemoveTargets
+          - guardduty:CreateFilter
+          - guardduty:CreateIPSet
+          - guardduty:DeleteDetector
+          - guardduty:DisassociateFromMasterAccount
+          - guardduty:UpdateDetector
+          - s3:PutAccountPublicAccessBlock
+        effect: Deny
+        resource: '*'
+      - action:
+          - ec2:AcceptVpcPeeringConnection
+          - ec2:AttachInternetGateway
+          - ec2:CreateEgressOnlyInternetGateway
+          - ec2:CreateInternetGateway
+          - ec2:CreateVpcPeeringConnection
+          - globalaccelerator:Create*
+          - globalaccelerator:Update*
+        effect: Deny
+        resource:
+          - '*'
+  policy_id: p-dbtm08da
+  policy_name: PreventDisableSecurityServices
+  targets:
+    roots:
+      - r-dea5
