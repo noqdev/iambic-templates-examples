@@ -1,0 +1,41 @@
+template_type: NOQ::AWS::Organizations::SCP
+account_id: '580605962305'
+iambic_managed: enforced
+identifier: PreventIMDSV1
+org_id: o-8t0mt0ybdd
+properties:
+  policy_document:
+    statement:
+      - action:
+          - '*'
+        condition:
+          NumericLessThan:
+            Ec2RoleDelivery: '2.0'
+        effect: Deny
+        resource:
+          - '*'
+      - action:
+          - ec2:RunInstances
+        condition:
+          StringNotEquals:
+            Ec2MetadataHttpTokens: required
+        effect: Deny
+        resource:
+          - arn:aws:ec2:*:*:instance/*
+      - action:
+          - ec2:ModifyInstanceMetadataOptions
+        effect: Deny
+        resource:
+          - '*'
+      - action:
+          - ec2:RunInstances
+        condition:
+          NumericGreaterThan:
+            Ec2MetadataHttpPutResponseHopLimit: '1'
+        effect: Deny
+        resource:
+          - arn:aws:ec2:*:*:instance/*
+  policy_name: PreventIMDSV1
+  targets:
+    roots:
+      - r-dea5
