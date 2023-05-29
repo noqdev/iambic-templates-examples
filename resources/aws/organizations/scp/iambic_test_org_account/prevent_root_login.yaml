@@ -1,0 +1,22 @@
+template_type: NOQ::AWS::Organizations::SCP
+account_id: '580605962305'
+iambic_managed: enforced
+identifier: DontRootMe
+org_id: o-8t0mt0ybdd
+properties:
+  policy_document:
+    statement:
+      - action:
+          - '*'
+        condition:
+          StringLike:
+            aws:PrincipalArn:
+              - arn:aws:iam::*:root
+        effect: Deny
+        resource:
+          - '*'
+  policy_id: p-gkhvx8m5
+  policy_name: DontRootMe
+  targets:
+    roots:
+      - r-dea5

@@ -1,0 +1,41 @@
+template_type: NOQ::AWS::Organizations::SCP
+account_id: '580605962305'
+iambic_managed: enforced
+identifier: RestrictRegions
+org_id: o-8t0mt0ybdd
+properties:
+  policy_document:
+    statement:
+      - condition:
+          StringNotEquals:
+            aws:RequestedRegion:
+              - us-east-1
+              - us-west-2
+        effect: Deny
+        not_action:
+          - a4b:*
+          - budgets:*
+          - ce:*
+          - chime:*
+          - cloudfront:*
+          - cur:*
+          - globalaccelerator:*
+          - health:*
+          - iam:*
+          - importexport:*
+          - mobileanalytics:*
+          - organizations:*
+          - route53:*
+          - route53domains:*
+          - shield:*
+          - support:*
+          - trustedadvisor:*
+          - waf:*
+          - wellarchitected:*
+        resource:
+          - '*'
+  policy_id: p-usy2yicd
+  policy_name: RestrictRegions
+  targets:
+    roots:
+      - r-dea5
