@@ -34,6 +34,7 @@ properties:
           - wellarchitected:*
         resource:
           - '*'
+  policy_id: p-usy2yicd
   policy_name: RestrictRegions
   targets:
     roots:

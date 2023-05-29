@@ -31,6 +31,7 @@ properties:
         effect: Deny
         resource:
           - '*'
+  policy_id: p-rmru2m06
   policy_name: PreventDisableSecurityServices
   targets:
     roots:
