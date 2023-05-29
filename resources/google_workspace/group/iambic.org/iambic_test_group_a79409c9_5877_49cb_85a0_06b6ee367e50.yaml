@@ -1,0 +1,15 @@
+template_type: NOQ::GoogleWorkspace::Group
+properties:
+  name: iambic_functional_test_temp_group_a79409c9-5877-49cb-85a0-06b6ee367e50
+  description: This is a temporary group created by the iambic functional test suite.
+  domain: iambic.org
+  email: iambic_test_group_a79409c9-5877-49cb-85a0-06b6ee367e50@iambic.org
+  members:
+    - email: curtis@iambic.org
+      role: OWNER
+    - email: iambic_test_user_1@iambic.org
+      status: UNDEFINED
+    - email: iambic_test_user_2@iambic.org
+      status: UNDEFINED
+    - email: iambic_test_user_3@iambic.org
+      status: UNDEFINED

@@ -45,6 +45,12 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
+          aws: arn:aws:iam::{{var.account_id}}:role/IambicFunctionalTestWizardRole
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
           aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
       - action:
           - sts:AssumeRole

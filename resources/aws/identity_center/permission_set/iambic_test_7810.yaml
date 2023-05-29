@@ -1,7 +1,15 @@
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
-identifier: iambic_test_update2028
+access_rules:
+  - included_orgs:
+      - o-8t0mt0ybdd
+    users:
+      - curtis@noq.dev
+      - iambic_test_user@iambic.org
+      - steven@noq.dev
+      - will@noq.dev
+identifier: iambic_test_7810
 properties:
-  name: iambic_test_update2028
+  name: iambic_test_7810
   description: This was created by a functional test.
   permissions_boundary:
     managed_policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess

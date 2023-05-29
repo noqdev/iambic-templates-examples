@@ -1,0 +1,38 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_org_account
+identifier: cf-actions
+properties:
+  policy_document:
+    statement:
+      - action:
+          - cloudformation:BatchDescribeTypeConfigurations
+          - cloudformation:CreateStackInstances
+          - cloudformation:CreateStackSet
+          - cloudformation:DescribeAccountLimits
+          - cloudformation:DescribeChangeSet
+          - cloudformation:DescribeChangeSetHooks
+          - cloudformation:DescribePublisher
+          - cloudformation:DescribeStackDriftDetectionStatus
+          - cloudformation:DescribeStackEvents
+          - cloudformation:DescribeStackInstance
+          - cloudformation:DescribeStackResource
+          - cloudformation:DescribeStackResourceDrifts
+          - cloudformation:DescribeStackResources
+          - cloudformation:DescribeStackSet
+          - cloudformation:DescribeStackSetOperation
+          - cloudformation:DescribeStacks
+          - cloudformation:DescribeType
+          - cloudformation:DescribeTypeRegistration
+          - cloudformation:DetectStackDrift
+          - cloudformation:DetectStackResourceDrift
+          - cloudformation:EstimateTemplateCost
+          - cloudformation:GetStackPolicy
+          - cloudformation:GetTemplate
+          - cloudformation:GetTemplateSummary
+          - cloudformation:ValidateTemplate
+        effect: Allow
+        resource: '*'
+        sid: VisualEditor0
+    version: '2012-10-17'
+  policy_name: cf-actions

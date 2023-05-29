@@ -1,0 +1,6 @@
+template_type: NOQ::Okta::Group
+idp_name: development
+properties:
+  name: Okta Administrators
+  description: Okta manages this group, which contains all administrators in your organization.
+  group_id: 00g9li8uftStz1vvS5d7

@@ -10,7 +10,6 @@ properties:
   name: design
   customer_managed_policy_references:
     - name: base_deny
-      path: /
   inline_policy:
     statement:
       - action:
@@ -29,7 +28,6 @@ properties:
   permissions_boundary:
     customer_managed_policy_reference:
       name: base_permission_boundary
-      path: /
   session_duration: PT4H
   tags:
     - key: owner

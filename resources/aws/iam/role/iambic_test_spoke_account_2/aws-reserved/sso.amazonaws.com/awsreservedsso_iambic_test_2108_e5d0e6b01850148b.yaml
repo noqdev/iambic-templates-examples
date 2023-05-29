@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_spoke_account_2
-identifier: AWSReservedSSO_iambic_test_4023_d55a6b1a26e37d39
+identifier: AWSReservedSSO_iambic_test_2108_e5d0e6b01850148b
 properties:
   description: This was created by a functional test.
   assume_role_policy_document:
@@ -18,4 +18,4 @@ properties:
     version: '2012-10-17'
   max_session_duration: 43200
   path: /aws-reserved/sso.amazonaws.com/
-  role_name: AWSReservedSSO_iambic_test_4023_d55a6b1a26e37d39
+  role_name: AWSReservedSSO_iambic_test_2108_e5d0e6b01850148b
