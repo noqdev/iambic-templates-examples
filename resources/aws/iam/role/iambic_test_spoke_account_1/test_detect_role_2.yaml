@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_spoke_account_1
-identifier: test_detect_role
+identifier: test_detect_role_2
 properties:
   description: create role to capture eventbridge change event in sqs test
   assume_role_policy_document:
@@ -15,7 +15,7 @@ properties:
         principal:
           service: ec2.amazonaws.com
     version: '2012-10-17'
-  role_name: test_detect_role
+  role_name: test_detect_role_2
   tags:
     - key: test-tag
-      value: detection-for-eventbridge-attempt-2
+      value: detection-for-eventbridge-attempt-3
