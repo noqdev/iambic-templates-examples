@@ -1,0 +1,21 @@
+template_type: NOQ::AWS::Organizations::SCP
+account_id: '580605962305'
+identifier: iambic_test_6737
+org_id: o-8t0mt0ybdd
+properties:
+  description: This was created by a functional test.
+  policy_document:
+    statement:
+      action: lex:*
+      effect: Allow
+      resource: '*'
+  policy_id: p-z5rzpxfi
+  policy_name: iambic_test_6737
+  tags:
+    - key: created_by
+      value: functional_test
+  targets:
+    accounts:
+      - iambic_test_spoke_account_1
+      - iambic_test_spoke_account_2
+      - iambic_test_spoke_account_3
