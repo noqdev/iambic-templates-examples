@@ -9,6 +9,24 @@ properties:
         effect: Allow
         principal:
           service: ec2.amazonaws.com
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
     version: '2012-10-17'
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess

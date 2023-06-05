@@ -1,0 +1,68 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: IambicSpokeRoleFuncTest4234
+properties:
+  description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:SetSourceIdentity
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::580605962305:role/IambicHubRoleFuncTest4234
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: base_permissions
+      statement:
+        - action:
+            - ec2:Describe*
+            - iam:*
+            - identitystore:*
+            - organizations:describe*
+            - organizations:list*
+            - sso:*
+          effect: Allow
+          resource:
+            - '*'
+        - action:
+            - secretsmanager:CreateSecret
+            - secretsmanager:GetSecretValue
+            - secretsmanager:PutSecretValue
+            - secretsmanager:describesecret
+            - secretsmanager:listsecrets
+            - secretsmanager:listsecretversionids
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:*:secret:iambic-config-secrets-*
+        - action:
+            - sqs:DeleteMessage
+            - sqs:GetQueueAttributes
+            - sqs:GetQueueUrl
+            - sqs:ReceiveMessage
+            - sqs:SendMessage
+          effect: Allow
+          resource:
+            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue*
+          sid: SqsWriteAccessForResourceMonitoring
+        - action:
+            - organizations:AttachPolicy
+            - organizations:CreatePolicy
+            - organizations:DeletePolicy
+            - organizations:DescribePolicy
+            - organizations:DetachPolicy
+            - organizations:ListPolicies
+            - organizations:ListTagsForResource
+            - organizations:TagResource
+            - organizations:UntagResource
+            - organizations:UpdatePolicy
+          effect: Allow
+          resource: '*'
+          sid: SCPsReadWrite
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
+  role_name: IambicSpokeRoleFuncTest4234
+  tags:
+    - key: team
+      value: engineering
