@@ -11,4 +11,12 @@ properties:
         principal:
           service: ec2.amazonaws.com
     version: '2012-10-17'
+  inline_policies:
+    - policy_name: hello
+      statement:
+        - action: s3:GetObject
+          effect: Deny
+          resource: arn:aws:s3:::fake-bucket/hello
+          sid: VisualEditor0
+      version: '2012-10-17'
   role_name: iambic_itest_bad_template

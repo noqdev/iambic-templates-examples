@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_org_account
-identifier: IambicHubRoleOrg3
+identifier: IambicHubRoleCurtis4
 properties:
   description: This role is used by IAMbic to assume into the spoke role of every account defined in the IAMbic config. Managed via CloudFormation.
   assume_role_policy_document:
@@ -22,7 +22,7 @@ properties:
             - sts:assumerole
           effect: Allow
           resource:
-            - arn:aws:iam::*:role/IambicSpokeRoleOrg3*
+            - arn:aws:iam::*:role/IambicSpokeRoleCurtis4*
       version: '2012-10-17'
     - policy_name: list_spoke_account_info
       statement:
@@ -32,9 +32,7 @@ properties:
           effect: Allow
           resource: '*'
       version: '2012-10-17'
-  role_name: IambicHubRoleOrg3
+  role_name: IambicHubRoleCurtis4
   tags:
-    - key: cost_center
-      value: engineering
-    - key: team
-      value: ops_team
+    - key: a
+      value: b with spaces

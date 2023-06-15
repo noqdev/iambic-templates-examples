@@ -1,7 +1,5 @@
 template_type: NOQ::AWS::IAM::Role
-excluded_accounts:
-  - iambic_test_org_account
-identifier: IambicSpokeRoleOrg3
+identifier: IambicSpokeRoleCurtis4
 properties:
   description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
   assume_role_policy_document:
@@ -12,7 +10,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: AROAYOLWP5BAWHG6FRCTB
+          aws: arn:aws:iam::580605962305:role/IambicHubRoleCurtis4
     version: '2012-10-17'
   inline_policies:
     - policy_name: base_permissions
@@ -45,14 +43,26 @@ properties:
             - sqs:SendMessage
           effect: Allow
           resource:
-            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue
+            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue*
           sid: SqsWriteAccessForResourceMonitoring
+        - action:
+            - organizations:AttachPolicy
+            - organizations:CreatePolicy
+            - organizations:DeletePolicy
+            - organizations:DescribePolicy
+            - organizations:DetachPolicy
+            - organizations:ListPolicies
+            - organizations:ListTagsForResource
+            - organizations:TagResource
+            - organizations:UntagResource
+            - organizations:UpdatePolicy
+          effect: Allow
+          resource: '*'
+          sid: SCPsReadWrite
       version: '2012-10-17'
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/ReadOnlyAccess
-  role_name: IambicSpokeRoleOrg3
+  role_name: IambicSpokeRoleCurtis4
   tags:
-    - key: cost_center
-      value: engineering
-    - key: team
-      value: ops_team
+    - key: a
+      value: b with spaces
