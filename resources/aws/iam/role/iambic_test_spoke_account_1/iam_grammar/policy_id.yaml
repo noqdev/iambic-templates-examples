@@ -12,8 +12,8 @@ properties:
           service: ec2.amazonaws.com
     version: '2012-10-17'
   inline_policies:
-    - policy_name: demo
-      id: fake-uuid-4 # demonstrate https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_id.html
+    - id: fake-uuid-4  # demonstrate https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_id.html
+      policy_name: demo
       statement:
         - action: s3:GetObject
           effect: Deny
