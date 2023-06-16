@@ -1,3 +1,7 @@
+== Last deployed version
+
+`iambic-core` `0.9.6`
+
 == Github Integration
 
 Github Integration today relies on lambda function deployment and is currently automated via terraform.
