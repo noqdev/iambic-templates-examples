@@ -3,7 +3,7 @@ included_accounts:
   - iambic_test_spoke_account_1
 identifier: iambic_image_builder
 properties:
-  description: build iambic image and upload to public ECR - bar10
+  description: build iambic image and upload to public ECR - bar12
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRoleWithWebIdentity
@@ -43,12 +43,12 @@ properties:
             - ecr-public:UploadLayerPart
           effect: Allow
           resource:
-            - arn:aws:ecr-public::{{var.account_id}}:repository/iambic
+            - arn:aws:ecr-public:::repository/iambic
           sid: ManageRepositoryContents
       version: '2012-10-17'
   role_name: iambic_image_builder
   tags:
     - key: noq-authorized
-      value: steven@noq.dev:curtis@noq.dev:will@noq.dev:jonathan@noq.dev
+      value: steven@noq.dev:curtis@noq.dev:will@noq.dev
     - key: test
       value: a
