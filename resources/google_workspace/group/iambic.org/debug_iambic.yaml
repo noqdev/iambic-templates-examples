@@ -1,0 +1,7 @@
+template_type: NOQ::GoogleWorkspace::Group
+properties:
+  name: debug-iambic
+  description: debug-iambic
+  domain: iambic.org
+  email: debug-iambic@iambic.org
+  members: []

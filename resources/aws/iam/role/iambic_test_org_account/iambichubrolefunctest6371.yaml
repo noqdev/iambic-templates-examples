@@ -1,0 +1,38 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: IambicHubRoleFuncTest6371
+properties:
+  description: This role is used by IAMbic to assume into the spoke role of every account defined in the IAMbic config. Managed via CloudFormation.
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:SetSourceIdentity
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::{{var.account_id}}:role/IambicFunctionalTestWizardRole
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: assume_spoke_role
+      statement:
+        - action:
+            - sts:SetSourceIdentity
+            - sts:assumerole
+          effect: Allow
+          resource:
+            - arn:aws:iam::*:role/IambicSpokeRoleFuncTest6371*
+      version: '2012-10-17'
+    - policy_name: list_spoke_account_info
+      statement:
+        - action:
+            - organizations:ListAccounts
+            - organizations:ListTagsForResource
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+  role_name: IambicHubRoleFuncTest6371
+  tags:
+    - key: team
+      value: engineering
