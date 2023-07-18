@@ -14,8 +14,3 @@ properties:
   tags:
     - key: created_by
       value: functional_test
-  targets:
-    accounts:
-      - iambic_test_spoke_account_1
-      - iambic_test_spoke_account_2
-      - iambic_test_spoke_account_3

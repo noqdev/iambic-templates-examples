@@ -1,6 +1,6 @@
 template_type: NOQ::AWS::Organizations::SCP
 account_id: '580605962305'
-identifier: iambic_test_2009
+identifier: iambic_test_1170
 org_id: o-8t0mt0ybdd
 properties:
   description: This was created by a functional test.
@@ -9,5 +9,8 @@ properties:
       action: lex:*
       effect: Allow
       resource: '*'
-  policy_id: p-4r890pdm
-  policy_name: iambic_test_2009
+  policy_id: p-intgrimw
+  policy_name: iambic_test_1170
+  tags:
+    - key: created_by
+      value: functional_test
