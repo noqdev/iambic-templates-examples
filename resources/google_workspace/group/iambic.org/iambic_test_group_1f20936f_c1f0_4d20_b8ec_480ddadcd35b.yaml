@@ -1,0 +1,7 @@
+template_type: NOQ::GoogleWorkspace::Group
+properties:
+  name: iambic_functional_test_temp_group_1f20936f-c1f0-4d20-b8ec-480ddadcd35b
+  description: This is a temporary group created by the iambic functional test suite.
+  domain: iambic.org
+  email: iambic_test_group_1f20936f-c1f0-4d20-b8ec-480ddadcd35b@iambic.org
+  members: []

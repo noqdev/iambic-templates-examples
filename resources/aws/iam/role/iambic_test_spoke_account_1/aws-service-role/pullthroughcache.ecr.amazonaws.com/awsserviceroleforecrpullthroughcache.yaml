@@ -1,0 +1,16 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: AWSServiceRoleForECRPullThroughCache
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: pullthroughcache.ecr.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/AWSECRPullThroughCache_ServiceRolePolicy
+  path: /aws-service-role/pullthroughcache.ecr.amazonaws.com/
+  role_name: AWSServiceRoleForECRPullThroughCache
