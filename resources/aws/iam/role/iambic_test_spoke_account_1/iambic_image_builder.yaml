@@ -12,7 +12,9 @@ properties:
             token.actions.githubusercontent.com:aud: sts.amazonaws.com
             token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
           StringLike:
-            token.actions.githubusercontent.com:sub: repo:noqdev/iambic:*
+            token.actions.githubusercontent.com:sub:
+              - repo:noqdev/iambic-gh-action-testing:*
+              - repo:noqdev/iambic:*
         effect: Allow
         principal:
           federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com

@@ -1,0 +1,17 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: AWSServiceRoleForAPIGateway
+properties:
+  description: The Service Linked Role is used by Amazon API Gateway.
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: ops.apigateway.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/APIGatewayServiceRolePolicy
+  path: /aws-service-role/ops.apigateway.amazonaws.com/
+  role_name: AWSServiceRoleForAPIGateway
