@@ -1,0 +1,19 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2
+properties:
+  description: Policy used in trust relationship with CodeBuild
+  path: /service-role/
+  policy_document:
+    statement:
+      - action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+        effect: Allow
+        resource:
+          - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:code-build/test-iambic-pull-through-cache
+          - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:code-build/test-iambic-pull-through-cache:*
+    version: '2012-10-17'
+  policy_name: CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2

@@ -1,0 +1,47 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambic_code_build
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: codebuild.amazonaws.com
+        sid: ''
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: terraform-20230725223155942700000001
+      statement:
+        - action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          effect: Allow
+          resource: '*'
+          sid: ''
+        - action:
+            - ecr:BatchCheckLayerAvailability
+            - ecr:BatchGetImage
+            - ecr:BatchImportUpstreamImage
+            - ecr:CompleteLayerUpload
+            - ecr:GetAuthorizationToken
+            - ecr:GetDownloadUrlForLayer
+            - ecr:InitiateLayerUpload
+            - ecr:PutImage
+            - ecr:UploadLayerPart
+          effect: Allow
+          resource: '*'
+          sid: ecr
+        - action:
+            - codebuild:BatchPutCodeCoverages
+            - codebuild:BatchPutTestCases
+            - codebuild:CreateReport
+            - codebuild:CreateReportGroup
+            - codebuild:UpdateReport
+          effect: Allow
+          resource: '*'
+          sid: ''
+      version: '2012-10-17'
+  role_name: iambic_code_build

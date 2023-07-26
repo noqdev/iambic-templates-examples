@@ -1,0 +1,33 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: codebuild-t-service-role
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: codebuild.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: ecr
+      statement:
+        - action:
+            - ecr:BatchCheckLayerAvailability
+            - ecr:BatchGetImage
+            - ecr:BatchImportUpstreamImage
+            - ecr:CompleteLayerUpload
+            - ecr:GetAuthorizationToken
+            - ecr:GetDownloadUrlForLayer
+            - ecr:InitiateLayerUpload
+            - ecr:PutImage
+            - ecr:UploadLayerPart
+          effect: Allow
+          resource: '*'
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/CodeBuildBasePolicy-test-iambic-pull-through-cache-us-west-2
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2
+  path: /service-role/
+  role_name: codebuild-t-service-role
