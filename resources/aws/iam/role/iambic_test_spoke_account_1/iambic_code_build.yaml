@@ -44,4 +44,6 @@ properties:
           resource: '*'
           sid: ''
       version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/CodeBuildCloudWatchLogsPolicy-iambic_code_build-cf-test-us-west-2
   role_name: iambic_code_build

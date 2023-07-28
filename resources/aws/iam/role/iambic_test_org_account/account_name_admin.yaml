@@ -14,6 +14,12 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
+          aws: arn:aws:iam::940552945933:role/prod_admin
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
           aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
       - action:
           - sts:AssumeRole

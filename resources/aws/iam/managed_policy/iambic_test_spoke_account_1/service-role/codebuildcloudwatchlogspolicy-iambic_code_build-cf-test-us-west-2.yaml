@@ -1,0 +1,19 @@
+template_type: NOQ::AWS::IAM::ManagedPolicy
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: CodeBuildCloudWatchLogsPolicy-iambic_code_build-cf-test-us-west-2
+properties:
+  description: Policy used in trust relationship with CodeBuild
+  path: /service-role/
+  policy_document:
+    statement:
+      - action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+        effect: Allow
+        resource:
+          - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:iambic_code_build-cf-test
+          - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:iambic_code_build-cf-test:*
+    version: '2012-10-17'
+  policy_name: CodeBuildCloudWatchLogsPolicy-iambic_code_build-cf-test-us-west-2

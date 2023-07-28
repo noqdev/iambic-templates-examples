@@ -1,0 +1,38 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambic_github_app_lambda_execution-STEVEN-FIXME
+properties:
+  description: Execution role for IAMbic Lambda Webhook
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: lambda.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: github-app
+      statement:
+        - action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          effect: Allow
+          resource: '*'
+          sid: Logging
+        - action:
+            - secretsmanager:GetSecretValue
+          effect: Allow
+          resource:
+            - arn:aws:secretsmanager:*:*:secret:iambic/github-app-private-key-*
+            - arn:aws:secretsmanager:*:*:secret:iambic/github-app-webhook-secret-*
+          sid: SecretReading
+        - action:
+            - sts:AssumeRole
+          effect: Allow
+          resource:
+            - arn:aws:iam::580605962305:role/IambicHubRole
+          sid: AssumeRole
+      version: '2012-10-17'
+  role_name: iambic_github_app_lambda_execution-STEVEN-FIXME
