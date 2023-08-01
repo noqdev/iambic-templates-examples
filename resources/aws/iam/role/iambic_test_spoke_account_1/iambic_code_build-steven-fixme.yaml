@@ -33,7 +33,7 @@ properties:
             - ecr:GetDownloadUrlForLayer
           effect: Allow
           resource:
-            - arn:*:ecr:*:*:repository/ecr-public/iambic/iambic
+            - arn:*:ecr:*:*:repository/iambic-ecr-public/iambic/iambic
           sid: ECRPull
       version: '2012-10-17'
   role_name: iambic_code_build-STEVEN-FIXME

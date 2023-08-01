@@ -20,3 +20,6 @@ properties:
           resource: arn:aws:s3:::fake-bucket/demo
       version: '2012-10-17'
   role_name: iam_grammar_policy_id
+  tags:
+    - key: '1'
+      value: '1'

@@ -23,6 +23,10 @@ properties:
   role_name: iambic_test_9527
   tags:
     - included_accounts:
+        - iambic_test_spoke_account_1
+      key: '1'
+      value: '1'
+    - included_accounts:
         - iambic_test_org_account
       key: terraform
       value: ''

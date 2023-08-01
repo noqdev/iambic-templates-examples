@@ -26,6 +26,7 @@ properties:
           effect: Allow
           resource:
             - arn:aws:secretsmanager:*:*:secret:iambic/github-app-private-key-*
+            - arn:aws:secretsmanager:*:*:secret:iambic/github-app-secrets-*
             - arn:aws:secretsmanager:*:*:secret:iambic/github-app-webhook-secret-*
           sid: SecretReading
         - action:
