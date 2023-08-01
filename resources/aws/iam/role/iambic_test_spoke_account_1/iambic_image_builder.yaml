@@ -3,7 +3,7 @@ included_accounts:
   - iambic_test_spoke_account_1
 identifier: iambic_image_builder
 properties:
-  description: build iambic image and upload to public ECR - bar12
+  description: build iambic image and upload to public ECR - bar14
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRoleWithWebIdentity
