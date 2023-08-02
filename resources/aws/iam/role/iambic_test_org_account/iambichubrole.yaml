@@ -69,7 +69,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::442632209887:role/iambic_github_app_lambda_execution-STEVEN-FIXME
+          aws: arn:aws:iam::442632209887:role/iambic_github_app_lambda_executionSTEVEN-FIXME
         sid: AllowIAMbicLambdaIntegration
     version: '2012-10-17'
   inline_policies:

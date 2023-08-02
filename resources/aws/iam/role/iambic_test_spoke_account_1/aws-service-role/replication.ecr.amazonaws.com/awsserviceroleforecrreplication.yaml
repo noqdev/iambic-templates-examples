@@ -1,0 +1,16 @@
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: AWSServiceRoleForECRReplication
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: replication.ecr.amazonaws.com
+    version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/aws-service-role/ECRReplicationServiceRolePolicy
+  path: /aws-service-role/replication.ecr.amazonaws.com/
+  role_name: AWSServiceRoleForECRReplication

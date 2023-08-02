@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_spoke_account_1
-identifier: iambic_github_app_lambda_execution-STEVEN-FIXME
+identifier: iambic_github_app_lambda_executionSTEVEN-FIXME
 properties:
   description: Execution role for IAMbic Lambda Webhook
   assume_role_policy_document:
@@ -36,4 +36,4 @@ properties:
             - arn:aws:iam::580605962305:role/IambicHubRole
           sid: AssumeRole
       version: '2012-10-17'
-  role_name: iambic_github_app_lambda_execution-STEVEN-FIXME
+  role_name: iambic_github_app_lambda_executionSTEVEN-FIXME

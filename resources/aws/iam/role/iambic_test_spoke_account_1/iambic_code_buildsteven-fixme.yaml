@@ -1,7 +1,7 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_spoke_account_1
-identifier: iambic_code_build-STEVEN-FIXME
+identifier: iambic_code_buildSTEVEN-FIXME
 properties:
   description: Execution role for IAMbic code build
   assume_role_policy_document:
@@ -36,4 +36,4 @@ properties:
             - arn:*:ecr:*:*:repository/iambic-ecr-public/iambic/iambic
           sid: ECRPull
       version: '2012-10-17'
-  role_name: iambic_code_build-STEVEN-FIXME
+  role_name: iambic_code_buildSTEVEN-FIXME
