@@ -4,7 +4,13 @@ included_accounts:
   - iambic_test_spoke_account_1
 identifier: iambic_github_app_lambda_execution
 properties:
-  description: Github App Lambda Execution
+  description:
+    - description: Github App Lambda Execution
+      included_accounts:
+        - iambic_test_org_account
+    - description: Execution role for IAMbic Lambda Webhook
+      included_accounts:
+        - iambic_test_spoke_account_1
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRole
@@ -51,28 +57,33 @@ properties:
       statement:
         - action:
             - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
           effect: Allow
-          resource:
-            - arn:aws:logs:us-west-2:{{var.account_id}}:*
-          sid: VisualEditor2
+          resource: '*'
+          sid: Logging
         - action:
             - secretsmanager:GetSecretValue
           effect: Allow
           resource:
-            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-private-key
-            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-private-key-*
-            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-webhook-secret
-            - arn:aws:secretsmanager:*:{{var.account_id}}:secret:dev/test-github-app-webhook-secret-*
-          sid: VisualEditor0
+            - arn:aws:secretsmanager:*:*:secret:iambic/github-app-private-key-*
+            - arn:aws:secretsmanager:*:*:secret:iambic/github-app-secrets-*
+            - arn:aws:secretsmanager:*:*:secret:iambic/github-app-webhook-secret-*
+          sid: SecretReading
         - action:
-            - logs:CreateLogStream
-            - logs:PutLogEvents
+            - sts:AssumeRole
           effect: Allow
           resource:
-            - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:/aws/lambda/iambic_github_app_webhook:*
-          sid: VisualEditor1
-        - action: sts:AssumeRole
-          effect: Allow
-          resource: arn:aws:iam::580605962305:role/IambicHubRole
+            - arn:aws:iam::580605962305:role/IambicHubRole
+          sid: AssumeRole
       version: '2012-10-17'
   role_name: iambic_github_app_lambda_execution
+  tags:
+    - included_accounts:
+        - iambic_test_spoke_account_1
+      key: owner
+      value: curtis
+    - included_accounts:
+        - iambic_test_spoke_account_1
+      key: team
+      value: engineering
