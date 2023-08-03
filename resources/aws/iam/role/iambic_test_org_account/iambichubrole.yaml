@@ -26,6 +26,7 @@ properties:
         effect: Allow
         principal:
           aws:
+            - arn:aws:iam::759357822767:role/development_admin
             - arn:aws:iam::{{var.account_id}}:role/test_org_admin
             - arn:aws:iam::{{var.account_id}}:role/{{var.account_name}}_admin
       - action:

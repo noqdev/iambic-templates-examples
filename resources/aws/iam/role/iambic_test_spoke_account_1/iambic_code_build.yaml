@@ -36,4 +36,6 @@ properties:
             - arn:*:ecr:*:*:repository/iambic-ecr-public/iambic/iambic
           sid: ECRPull
       version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/CodeBuildBasePolicy-iambic_code_build-us-east-1
   role_name: iambic_code_build
