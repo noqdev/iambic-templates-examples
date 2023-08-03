@@ -37,8 +37,3 @@ properties:
           sid: ECRPull
       version: '2012-10-17'
   role_name: iambic_code_build
-  tags:
-    - key: owner
-      value: curtis
-    - key: team
-      value: engineering

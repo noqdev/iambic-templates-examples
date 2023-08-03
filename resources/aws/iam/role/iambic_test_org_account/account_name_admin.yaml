@@ -26,31 +26,8 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
-          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
-          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
-          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
-          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
+          aws: arn:aws:iam::804624193200:role/iambic_dev_admin
+        sid: AllowIambicDevAccess
     version: '2012-10-17'
   managed_policies:
     - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess

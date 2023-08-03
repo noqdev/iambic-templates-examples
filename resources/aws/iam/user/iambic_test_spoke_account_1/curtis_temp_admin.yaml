@@ -1,0 +1,8 @@
+template_type: NOQ::AWS::IAM::User
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: curtis_temp_admin
+properties:
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/AdministratorAccess
+  user_name: curtis_temp_admin

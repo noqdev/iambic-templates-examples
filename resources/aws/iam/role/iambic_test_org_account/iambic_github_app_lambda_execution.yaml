@@ -78,12 +78,3 @@ properties:
           sid: AssumeRole
       version: '2012-10-17'
   role_name: iambic_github_app_lambda_execution
-  tags:
-    - included_accounts:
-        - iambic_test_spoke_account_1
-      key: owner
-      value: curtis
-    - included_accounts:
-        - iambic_test_spoke_account_1
-      key: team
-      value: engineering

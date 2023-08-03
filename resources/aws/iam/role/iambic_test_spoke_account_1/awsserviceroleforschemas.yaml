@@ -1,5 +1,6 @@
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
+  - iambic_test_org_account
   - iambic_test_spoke_account_1
 identifier: AWSServiceRoleForSchemas
 properties:

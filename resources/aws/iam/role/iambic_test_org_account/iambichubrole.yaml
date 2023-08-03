@@ -39,19 +39,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: AROAWODXPQXPZJZPC2OL7
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
           aws: arn:aws:iam::{{var.account_id}}:role/IambicFunctionalTestWizardRole
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
-          aws: arn:aws:iam::940552945933:role/NoqCentralRoleCorpNoqDev
       - action:
           - sts:AssumeRole
           - sts:TagSession
@@ -69,7 +57,14 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: AROAWODXPQXPZJZPC2OL7
+          aws: arn:aws:iam::804624193200:role/iambic_dev_admin
+        sid: AllowIambicDevAccess
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::442632209887:role/iambic_github_app_lambda_execution
         sid: AllowIAMbicLambdaIntegration
     version: '2012-10-17'
   inline_policies:

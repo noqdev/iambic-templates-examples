@@ -1,0 +1,34 @@
+template_type: NOQ::AWS::IAM::Role
+identifier: IAMbicEventForwardingRoleJonathanDevelopment
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRole
+        effect: Allow
+        principal:
+          service: events.amazonaws.com
+    version: '2012-10-17'
+  inline_policies:
+    - included_accounts:
+        - iambic_test_org_account
+      policy_name: IAMbicEventForwardingRolePolicy
+      statement:
+        - action:
+            - events:PutEvents
+          effect: Allow
+          resource:
+            - arn:aws:events:us-east-1:{{var.account_id}}:event-bus/IAMbicChangeDetectionEventBusJonathanDevelopment
+      version: '2012-10-17'
+    - included_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
+      policy_name: IAMbicEventForwardingRolePolicy
+      statement:
+        - action:
+            - events:PutEvents
+          effect: Allow
+          resource:
+            - arn:aws:events:us-east-1:580605962305:event-bus/IAMbicChangeDetectionJonathanDevelopmentEventBus
+      version: '2012-10-17'
+  role_name: IAMbicEventForwardingRoleJonathanDevelopment
