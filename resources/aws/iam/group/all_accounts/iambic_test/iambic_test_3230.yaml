@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_group_template
 template_type: NOQ::AWS::IAM::Group
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_group_template
 identifier: iambic_test_3230
 properties:
   group_name: iambic_test_3230

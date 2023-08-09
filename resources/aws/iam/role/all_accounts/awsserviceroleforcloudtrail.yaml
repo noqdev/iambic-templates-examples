@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 identifier: AWSServiceRoleForCloudTrail
 properties:
   description: This service linked role is used for supporting organization trail feature

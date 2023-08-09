@@ -1,0 +1,9 @@
+template_type: NOQ::AWS::IAM::User
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_user_template
+included_accounts:
+  - iambic_test_spoke_account_2
+  - iambic_test_spoke_account_3
+identifier: iambic_test_3098
+properties:
+  path: /iambic_test/
+  user_name: iambic_test_3098

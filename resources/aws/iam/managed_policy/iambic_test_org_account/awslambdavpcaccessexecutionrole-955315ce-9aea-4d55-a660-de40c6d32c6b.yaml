@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_org_account
 identifier: AWSLambdaVPCAccessExecutionRole-955315ce-9aea-4d55-a660-de40c6d32c6b

@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/google_workspace_group_template
 template_type: NOQ::GoogleWorkspace::Group
+template_schema_url: https://docs.iambic.org/reference/schemas/google_workspace_group_template
 properties:
   name: iambic_functional_test_temp_group_dde4b677-09b9-46f2-90d2-9a7d12926735
   description: This is a temporary group created by the iambic functional test suite.
