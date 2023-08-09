@@ -1,5 +1,5 @@
-template_type: NOQ::Okta::App
 template_schema_url: https://docs.iambic.org/reference/schemas/okta_app_template
+template_type: NOQ::Okta::App
 idp_name: development
 properties:
   name: test application

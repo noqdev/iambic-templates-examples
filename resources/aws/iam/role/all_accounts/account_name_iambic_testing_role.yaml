@@ -1,5 +1,5 @@
-template_type: NOQ::AWS::IAM::Role
 template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
+template_type: NOQ::AWS::IAM::Role
 identifier: '{{var.account_name}}_iambic_testing_role'
 properties:
   description: IAMbic test role on {{var.account_name}}
