@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_org_account
 identifier: LambdaInvokeScopedAccessPolicy-261cdb65-8e94-4663-bd63-033f94f6170a

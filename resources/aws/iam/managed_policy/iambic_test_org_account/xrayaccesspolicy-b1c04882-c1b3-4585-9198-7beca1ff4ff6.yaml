@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_org_account
 identifier: XRayAccessPolicy-b1c04882-c1b3-4585-9198-7beca1ff4ff6

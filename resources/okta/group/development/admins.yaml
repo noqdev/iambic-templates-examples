@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/okta_group_template
 template_type: NOQ::Okta::Group
+template_schema_url: https://docs.iambic.org/reference/schemas/okta_group_template
 idp_name: development
 properties:
   name: admins

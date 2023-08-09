@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/azure_active_directory_user_template
 template_type: NOQ::AzureAD::User
+template_schema_url: https://docs.iambic.org/reference/schemas/azure_active_directory_user_template
 idp_name: iambic
 properties:
   display_name: Steven Moy
