@@ -22,7 +22,7 @@ jobs:
           pip install boto3
       - name: Configure AWS Credentials
         if: ${{ github.repository == 'noqdev/iambic-templates-examples' }}
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::580605962305:role/iambic_github_app_updater
           aws-region: us-east-1
