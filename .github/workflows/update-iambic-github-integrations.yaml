@@ -1,0 +1,31 @@
+name: update-iambic-github-integrations
+on:
+  workflow_dispatch:
+jobs:
+  update-iambic-github-integrations:
+    if: ${{ github.repository == 'noqdev/iambic-templates-examples' }}
+    runs-on: ubuntu-latest
+    name: update-iambic-github-integrations
+    timeout-minutes: 60 # Setting this to 60 min for now. If this takes longer, it needs better performance improvement
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+    permissions:
+      id-token: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      # we run on a managed runner, that's why we don't use virtualenv
+      - name: bootstrap
+        run: |
+          pip install boto3
+      - name: Configure AWS Credentials
+        if: ${{ github.repository == 'noqdev/iambic-templates-examples' }}
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::580605962305:role/iambic_github_app_updater
+          aws-region: us-east-1
+      - name: run_updater
+        id: run_updater
+        run: |
+          python deployment/upgrade_iambic_version_for_lambda/upgrade_lambda.py
