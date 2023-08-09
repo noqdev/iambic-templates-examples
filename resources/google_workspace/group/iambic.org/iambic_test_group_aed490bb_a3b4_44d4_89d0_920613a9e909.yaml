@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/google_workspace_group_template
 template_type: NOQ::GoogleWorkspace::Group
 properties:
   name: iambic_functional_test_temp_group_aed490bb-a3b4-44d4-89d0-920613a9e909

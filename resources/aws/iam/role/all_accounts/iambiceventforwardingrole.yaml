@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
 identifier: IAMbicEventForwardingRole
 properties:

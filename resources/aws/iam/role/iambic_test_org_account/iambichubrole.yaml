@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_org_account
@@ -8,14 +9,10 @@ properties:
     statement:
       - action: sts:AssumeRoleWithWebIdentity
         condition:
-          ForAllValues:StringEquals:
+          StringEquals:
             token.actions.githubusercontent.com:aud: sts.amazonaws.com
-            token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
           StringLike:
-            token.actions.githubusercontent.com:sub:
-              - repo:noqdev/iambic-templates-itest:environment:production
-              - repo:noqdev/iambic-templates-itest:ref:refs/heads/main
-              - repo:noqdev/iambic:*
+            token.actions.githubusercontent.com:sub: repo:noqdev/iambic:*
         effect: Allow
         principal:
           federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com
@@ -29,12 +26,6 @@ properties:
             - arn:aws:iam::759357822767:role/development_admin
             - arn:aws:iam::{{var.account_id}}:role/test_org_admin
             - arn:aws:iam::{{var.account_id}}:role/{{var.account_name}}_admin
-      - action:
-          - sts:AssumeRole
-          - sts:TagSession
-        effect: Allow
-        principal:
-          aws: arn:aws:iam::{{var.account_id}}:role/iambic_github_app_lambda_execution
       - action:
           - sts:AssumeRole
           - sts:TagSession
@@ -65,7 +56,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::442632209887:role/iambic_github_app_lambda_execution
+          aws: arn:aws:iam::{{var.account_id}}:role/iambic_github_app_lambda_execution
         sid: AllowIAMbicLambdaIntegration
     version: '2012-10-17'
   inline_policies:

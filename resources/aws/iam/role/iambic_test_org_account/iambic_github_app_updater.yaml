@@ -1,0 +1,55 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_org_account
+identifier: iambic_github_app_updater
+properties:
+  assume_role_policy_document:
+    statement:
+      - action: sts:AssumeRoleWithWebIdentity
+        condition:
+          StringEquals:
+            token.actions.githubusercontent.com:aud: sts.amazonaws.com
+          StringLike:
+            token.actions.githubusercontent.com:sub: repo:noqdev/iambic-templates-examples:ref:refs/heads/main
+        effect: Allow
+        principal:
+          federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: updater
+      statement:
+        - action:
+            - cloudformation:ListStacks
+          effect: Allow
+          resource:
+            - '*'
+        - action:
+            - cloudformation:DescribeStacks
+            - cloudformation:UpdateStack
+          effect: Allow
+          resource:
+            - arn:aws:cloudformation:*:{{var.account_id}}:stack/IAMbicGitHubAppLambda/*
+        - action:
+            - codebuild:BatchGetBuilds
+            - codebuild:StartBuild
+          effect: Allow
+          resource:
+            - arn:aws:codebuild:*:{{var.account_id}}:project/iambic_code_build
+        - action:
+            - ecr:DescribeImages
+          effect: Allow
+          resource:
+            - arn:aws:ecr:*:{{var.account_id}}:repository/iambic-ecr-public/iambic/iambic
+        - action:
+            - lambda:GetFunctionUrlConfig
+            - lambda:ListTags
+            - lambda:UpdateFunctionCode
+          effect: Allow
+          resource:
+            - arn:aws:lambda:*:{{var.account_id}}:function:iambic_github_app_webhook
+      version: '2012-10-17'
+  role_name: iambic_github_app_updater
+  tags:
+    - key: owner
+      value: steven@noq.dev

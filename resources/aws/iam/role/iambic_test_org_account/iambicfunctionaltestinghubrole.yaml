@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_org_account
@@ -7,9 +8,8 @@ properties:
     statement:
       - action: sts:AssumeRoleWithWebIdentity
         condition:
-          ForAllValues:StringEquals:
+          StringEquals:
             token.actions.githubusercontent.com:aud: sts.amazonaws.com
-            token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
           StringLike:
             token.actions.githubusercontent.com:sub: repo:noqdev/iambic:*
         effect: Allow

@@ -1,0 +1,57 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
+template_type: NOQ::AWS::IAM::Role
+included_accounts:
+  - iambic_test_spoke_account_1
+identifier: iambic_github_integration_updater
+properties:
+  description: iambic_github_integration_updater
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/prod_admin
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: CloudFormation
+      statement:
+        - action: cloudformation:ListStacks
+          effect: Allow
+          resource: '*'
+          sid: VisualEditor0
+        - action:
+            - cloudformation:DescribeStacks
+            - cloudformation:UpdateStack
+          effect: Allow
+          resource: arn:aws:cloudformation:*:{{var.account_id}}:stack/IAMbicGitHubAppLambda/*
+          sid: VisualEditor1
+      version: '2012-10-17'
+    - policy_name: CodeBuild
+      statement:
+        - action:
+            - codebuild:BatchGetBuilds
+            - codebuild:StartBuild
+          effect: Allow
+          resource: arn:aws:codebuild:*:{{var.account_id}}:project/iambic_code_build
+          sid: VisualEditor0
+      version: '2012-10-17'
+    - policy_name: ECR
+      statement:
+        - action: ecr:DescribeImages
+          effect: Allow
+          resource: arn:aws:ecr:*:{{var.account_id}}:repository/iambic-ecr-public/iambic/iambic
+          sid: VisualEditor0
+      version: '2012-10-17'
+    - policy_name: Lambda
+      statement:
+        - action:
+            - lambda:GetFunctionUrlConfig
+            - lambda:ListTags
+            - lambda:UpdateFunctionCode
+          effect: Allow
+          resource: arn:aws:lambda:*:{{var.account_id}}:function:iambic_github_app_webhook
+          sid: VisualEditor0
+      version: '2012-10-17'
+  role_name: iambic_github_integration_updater

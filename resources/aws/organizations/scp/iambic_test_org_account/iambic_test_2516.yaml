@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_scp_policy_template
 template_type: NOQ::AWS::Organizations::SCP
 account_id: '580605962305'
 identifier: iambic_test_2516

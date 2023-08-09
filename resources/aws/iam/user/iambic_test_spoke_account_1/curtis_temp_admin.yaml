@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_user_template
 template_type: NOQ::AWS::IAM::User
 included_accounts:
   - iambic_test_spoke_account_1

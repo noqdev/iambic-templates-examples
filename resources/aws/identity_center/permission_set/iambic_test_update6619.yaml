@@ -1,3 +1,4 @@
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_identity_center_permission_set_template
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
 identifier: iambic_test_update6619
 properties:
