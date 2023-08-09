@@ -29,4 +29,7 @@ jobs:
       - name: run_updater
         id: run_updater
         run: |
+          echo $IAMBIC_TARGET_VERSION
           python deployment/upgrade_iambic_version_for_lambda/upgrade_lambda.py
+        env:
+          IAMBIC_TARGET_VERSION: 0.11.32
