@@ -11,7 +11,6 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: false
     permissions:
-      id-token: read
       contents: read
     steps:
       - uses: actions/checkout@v3
