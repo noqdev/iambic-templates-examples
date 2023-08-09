@@ -9,9 +9,8 @@ properties:
     statement:
       - action: sts:AssumeRoleWithWebIdentity
         condition:
-          ForAllValues:StringEquals:
+          StringEquals:
             token.actions.githubusercontent.com:aud: sts.amazonaws.com
-            token.actions.githubusercontent.com:iss: https://token.actions.githubusercontent.com
           StringLike:
             token.actions.githubusercontent.com:sub:
               - repo:noqdev/iambic-gh-action-testing:*
