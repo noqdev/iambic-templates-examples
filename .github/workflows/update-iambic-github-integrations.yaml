@@ -11,6 +11,8 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: false
     permissions:
+      # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+      id-token: write
       contents: read
     steps:
       - uses: actions/checkout@v3
