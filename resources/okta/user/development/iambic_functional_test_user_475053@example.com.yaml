@@ -1,5 +1,5 @@
-template_type: NOQ::Okta::User
 template_schema_url: https://docs.iambic.org/reference/schemas/okta_user_template
+template_type: NOQ::Okta::User
 idp_name: development
 properties:
   profile:

@@ -1,5 +1,5 @@
-template_type: NOQ::AzureAD::Group
 template_schema_url: https://docs.iambic.org/reference/schemas/azure_active_directory_group_template
+template_type: NOQ::AzureAD::Group
 idp_name: iambic
 properties:
   name: engineering

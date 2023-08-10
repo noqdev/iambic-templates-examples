@@ -1,5 +1,5 @@
-template_type: NOQ::AWS::IAM::ManagedPolicy
 template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
+template_type: NOQ::AWS::IAM::ManagedPolicy
 included_accounts:
   - iambic_test_spoke_account_1
 identifier: CodeBuildBasePolicy-test-iambic-pull-through-cache-us-west-2
