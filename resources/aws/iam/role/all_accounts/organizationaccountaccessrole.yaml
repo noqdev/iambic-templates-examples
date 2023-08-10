@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 identifier: OrganizationAccountAccessRole
 properties:
   description: Role cloned via Noq by steven@noq.dev from arn:aws:iam::259868150464:role/OrganizationAccountAccessRole

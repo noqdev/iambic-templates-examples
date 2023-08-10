@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_scp_policy_template
 template_type: NOQ::AWS::Organizations::SCP
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_scp_policy_template
 account_id: '580605962305'
 identifier: iambic_test_2482
 org_id: o-8t0mt0ybdd
