@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_org_account
 identifier: AWSLambdaBasicExecutionRole-373e4eb0-f0a6-4d68-82f0-035bd3765c08
