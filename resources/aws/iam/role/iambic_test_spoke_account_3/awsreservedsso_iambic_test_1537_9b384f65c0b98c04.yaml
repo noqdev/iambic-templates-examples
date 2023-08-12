@@ -1,5 +1,5 @@
-template_type: NOQ::AWS::IAM::Role
 template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
+template_type: NOQ::AWS::IAM::Role
 included_accounts:
   - iambic_test_spoke_account_3
 identifier: AWSReservedSSO_iambic_test_1537_9b384f65c0b98c04
