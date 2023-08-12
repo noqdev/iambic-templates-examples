@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_org_account
 identifier: IambicSpokeRole_LOCAL_TEST
@@ -23,5 +23,5 @@ properties:
             - sqs:ReceiveMessage
           effect: Allow
           resource:
-            - arn:aws:sqs:us-east-1:{{var.account_id}}:IAMbicChangeDetectionQueue
+            - arn:aws:sqs:us-east-1:580605962305:IAMbicChangeDetectionQueue
   role_name: IambicSpokeRole_LOCAL_TEST

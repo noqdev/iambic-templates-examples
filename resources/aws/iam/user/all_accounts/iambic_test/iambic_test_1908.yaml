@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_user_template
 template_type: NOQ::AWS::IAM::User
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_user_template
 identifier: iambic_test_1908
 properties:
   inline_policies:

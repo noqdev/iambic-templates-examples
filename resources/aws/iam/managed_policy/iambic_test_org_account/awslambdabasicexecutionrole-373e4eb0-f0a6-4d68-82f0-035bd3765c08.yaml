@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_org_account
 identifier: AWSLambdaBasicExecutionRole-373e4eb0-f0a6-4d68-82f0-035bd3765c08
@@ -9,13 +9,13 @@ properties:
     statement:
       - action: logs:CreateLogGroup
         effect: Allow
-        resource: arn:aws:logs:us-east-1:{{var.account_id}}:*
+        resource: arn:aws:logs:us-east-1:580605962305:*
       - action:
           - logs:CreateLogStream
           - logs:PutLogEvents
         effect: Allow
         resource:
-          - arn:aws:logs:us-east-1:{{var.account_id}}:log-group:/aws/lambda/steven-test-lambda-efs:*
-          - arn:aws:logs:us-east-1:{{var.account_id}}:log-group:/aws/lambda/test-cf-*:*
+          - arn:aws:logs:us-east-1:580605962305:log-group:/aws/lambda/steven-test-lambda-efs:*
+          - arn:aws:logs:us-east-1:580605962305:log-group:/aws/lambda/test-cf-*:*
     version: '2012-10-17'
   policy_name: AWSLambdaBasicExecutionRole-373e4eb0-f0a6-4d68-82f0-035bd3765c08

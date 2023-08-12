@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_org_account
 identifier: IambicFunctionalTestingSpokeRole
@@ -9,7 +9,7 @@ properties:
       - action: sts:AssumeRole
         effect: Allow
         principal:
-          aws: arn:aws:iam::{{var.account_id}}:role/IambicFunctionalTestingHubRole
+          aws: arn:aws:iam::580605962305:role/IambicFunctionalTestingHubRole
         sid: Statement1
     version: '2012-10-17'
   role_name: IambicFunctionalTestingSpokeRole

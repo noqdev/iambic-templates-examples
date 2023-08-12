@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_org_account
 identifier: IambicHubRoleCurtis4
@@ -13,7 +13,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::{{var.account_id}}:role/{{var.account_name}}_admin
+          aws: arn:aws:iam::580605962305:role/iambic_test_org_account_admin
     version: '2012-10-17'
   inline_policies:
     - policy_name: assume_spoke_role

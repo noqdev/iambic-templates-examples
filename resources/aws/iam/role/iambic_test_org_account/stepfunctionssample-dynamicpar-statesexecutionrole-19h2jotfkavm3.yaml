@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_org_account
 identifier: StepFunctionsSample-DynamicPar-StatesExecutionRole-19H2JOTFKAVM3
@@ -18,17 +18,17 @@ properties:
             - lambda:InvokeFunction
           effect: Allow
           resource:
-            - arn:aws:lambda:us-east-1:{{var.account_id}}:function:StepFunctionsSample-Dynam-DeleteFromSQSQueueLambda-9mieC44XQnLB
-            - arn:aws:lambda:us-east-1:{{var.account_id}}:function:StepFunctionsSample-Dynamic-ReadFromSQSQueueLambda-lulvxcHU0JIf
+            - arn:aws:lambda:us-east-1:580605962305:function:StepFunctionsSample-Dynam-DeleteFromSQSQueueLambda-9mieC44XQnLB
+            - arn:aws:lambda:us-east-1:580605962305:function:StepFunctionsSample-Dynamic-ReadFromSQSQueueLambda-lulvxcHU0JIf
         - action:
             - dynamodb:PutItem
           effect: Allow
           resource:
-            - arn:aws:dynamodb:us-east-1:{{var.account_id}}:table/StepFunctionsSample-DynamicParallelProcessing9137d065-952e-4fa7-8195-57ffb6f3cb9b-DDBTable-1S4UOJPC4J6WF
+            - arn:aws:dynamodb:us-east-1:580605962305:table/StepFunctionsSample-DynamicParallelProcessing9137d065-952e-4fa7-8195-57ffb6f3cb9b-DDBTable-1S4UOJPC4J6WF
         - action:
             - sns:Publish
           effect: Allow
           resource:
-            - arn:aws:sns:us-east-1:{{var.account_id}}:StepFunctionsSample-DynamicParallelProcessing9137d065-952e-4fa7-8195-57ffb6f3cb9b-SNSTopic-woBR9drgH7xU
+            - arn:aws:sns:us-east-1:580605962305:StepFunctionsSample-DynamicParallelProcessing9137d065-952e-4fa7-8195-57ffb6f3cb9b-SNSTopic-woBR9drgH7xU
       version: '2012-10-17'
   role_name: StepFunctionsSample-DynamicPar-StatesExecutionRole-19H2JOTFKAVM3

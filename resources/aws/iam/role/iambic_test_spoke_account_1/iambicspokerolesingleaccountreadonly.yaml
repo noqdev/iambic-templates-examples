@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_spoke_account_1
 identifier: IambicSpokeRoleSingleAccountReadOnly
@@ -13,7 +13,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::{{var.account_id}}:role/IambicHubRoleSingleAccountReadOnly
+          aws: arn:aws:iam::442632209887:role/IambicHubRoleSingleAccountReadOnly
     version: '2012-10-17'
   inline_policies:
     - policy_name: base_permissions

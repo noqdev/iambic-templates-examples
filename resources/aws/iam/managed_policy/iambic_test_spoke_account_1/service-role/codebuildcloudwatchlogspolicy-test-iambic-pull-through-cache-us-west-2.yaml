@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_spoke_account_1
 identifier: CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2
@@ -14,7 +14,7 @@ properties:
           - logs:PutLogEvents
         effect: Allow
         resource:
-          - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:code-build/test-iambic-pull-through-cache
-          - arn:aws:logs:us-west-2:{{var.account_id}}:log-group:code-build/test-iambic-pull-through-cache:*
+          - arn:aws:logs:us-west-2:442632209887:log-group:code-build/test-iambic-pull-through-cache
+          - arn:aws:logs:us-west-2:442632209887:log-group:code-build/test-iambic-pull-through-cache:*
     version: '2012-10-17'
   policy_name: CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2

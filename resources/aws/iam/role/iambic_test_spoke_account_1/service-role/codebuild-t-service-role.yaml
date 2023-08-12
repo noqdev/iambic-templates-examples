@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_spoke_account_1
 identifier: codebuild-t-service-role
@@ -28,7 +28,7 @@ properties:
           resource: '*'
       version: '2012-10-17'
   managed_policies:
-    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/CodeBuildBasePolicy-test-iambic-pull-through-cache-us-west-2
-    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/service-role/CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2
+    - policy_arn: arn:aws:iam::442632209887:policy/service-role/CodeBuildBasePolicy-test-iambic-pull-through-cache-us-west-2
+    - policy_arn: arn:aws:iam::442632209887:policy/service-role/CodeBuildCloudWatchLogsPolicy-test-iambic-pull-through-cache-us-west-2
   path: /service-role/
   role_name: codebuild-t-service-role

@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 template_type: NOQ::AWS::IAM::ManagedPolicy
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_managed_policy_template
 included_accounts:
   - iambic_test_org_account
 identifier: StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8
@@ -12,7 +12,7 @@ properties:
           - states:StartExecution
         effect: Allow
         resource:
-          - arn:aws:states:us-east-1:{{var.account_id}}:stateMachine:MyStateMachine
+          - arn:aws:states:us-east-1:580605962305:stateMachine:MyStateMachine
       - action:
           - states:DescribeExecution
           - states:StopExecution
@@ -24,6 +24,6 @@ properties:
           - events:PutTargets
         effect: Allow
         resource:
-          - arn:aws:events:us-east-1:{{var.account_id}}:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
+          - arn:aws:events:us-east-1:580605962305:rule/StepFunctionsGetEventsForStepFunctionsExecutionRule
     version: '2012-10-17'
   policy_name: StepFunctionsStartExecutionManagementScopedAccessPolicy-429c0ade-4e3f-45ea-b564-c7987db5d0f8

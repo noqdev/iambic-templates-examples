@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_spoke_account_2
 identifier: AWSReservedSSO_iambic_test_8474_b0af6207194a8b28
@@ -15,7 +15,7 @@ properties:
             SAML:aud: https://signin.aws.amazon.com/saml
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{var.account_id}}:saml-provider/AWSSSO_0395132c01cde359_DO_NOT_DELETE
+          federated: arn:aws:iam::192455039954:saml-provider/AWSSSO_0395132c01cde359_DO_NOT_DELETE
     version: '2012-10-17'
   inline_policies:
     - policy_name: AwsSSOInlinePolicy
@@ -35,5 +35,5 @@ properties:
   max_session_duration: 43200
   path: /aws-reserved/sso.amazonaws.com/
   permissions_boundary:
-    policy_arn: arn:aws:iam::{{var.account_id}}:policy/base_permission_boundary
+    policy_arn: arn:aws:iam::192455039954:policy/base_permission_boundary
   role_name: AWSReservedSSO_iambic_test_8474_b0af6207194a8b28

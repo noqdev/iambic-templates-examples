@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_org_account
 identifier: IambicFunctionalTestWizardRole
@@ -9,7 +9,7 @@ properties:
       - action: sts:AssumeRole
         effect: Allow
         principal:
-          aws: arn:aws:iam::{{var.account_id}}:role/IambicHubRole
+          aws: arn:aws:iam::580605962305:role/IambicHubRole
         sid: Statement1
     version: '2012-10-17'
   inline_policies:
@@ -67,5 +67,5 @@ properties:
           sid: VisualEditor0
       version: '2012-10-17'
   managed_policies:
-    - policy_arn: arn:aws:iam::{{var.account_id}}:policy/cf-actions
+    - policy_arn: arn:aws:iam::580605962305:policy/cf-actions
   role_name: IambicFunctionalTestWizardRole

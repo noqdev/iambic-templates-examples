@@ -1,5 +1,5 @@
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 included_accounts:
   - iambic_test_org_account
 identifier: iambic_github_app_updater
@@ -14,7 +14,7 @@ properties:
             token.actions.githubusercontent.com:sub: repo:noqdev/iambic-templates-examples:ref:refs/heads/main
         effect: Allow
         principal:
-          federated: arn:aws:iam::{{var.account_id}}:oidc-provider/token.actions.githubusercontent.com
+          federated: arn:aws:iam::580605962305:oidc-provider/token.actions.githubusercontent.com
     version: '2012-10-17'
   inline_policies:
     - policy_name: updater
@@ -29,25 +29,25 @@ properties:
             - cloudformation:UpdateStack
           effect: Allow
           resource:
-            - arn:aws:cloudformation:*:{{var.account_id}}:stack/IAMbicGitHubAppLambda/*
+            - arn:aws:cloudformation:*:580605962305:stack/IAMbicGitHubAppLambda/*
         - action:
             - codebuild:BatchGetBuilds
             - codebuild:StartBuild
           effect: Allow
           resource:
-            - arn:aws:codebuild:*:{{var.account_id}}:project/iambic_code_build
+            - arn:aws:codebuild:*:580605962305:project/iambic_code_build
         - action:
             - ecr:DescribeImages
           effect: Allow
           resource:
-            - arn:aws:ecr:*:{{var.account_id}}:repository/iambic-ecr-public/iambic/iambic
+            - arn:aws:ecr:*:580605962305:repository/iambic-ecr-public/iambic/iambic
         - action:
             - lambda:GetFunctionUrlConfig
             - lambda:ListTags
             - lambda:UpdateFunctionCode
           effect: Allow
           resource:
-            - arn:aws:lambda:*:{{var.account_id}}:function:iambic_github_app_webhook
+            - arn:aws:lambda:*:580605962305:function:iambic_github_app_webhook
       version: '2012-10-17'
   role_name: iambic_github_app_updater
   tags:
