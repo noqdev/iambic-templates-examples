@@ -2,7 +2,15 @@ template_type: NOQ::AWS::IAM::Role
 template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
 identifier: IambicSpokeRole
 properties:
-  description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+  description:
+    - description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation. testing4
+      included_accounts:
+        - iambic_test_org_account
+    - description: This role is used by IAMbic to perform all actions on the account. It is assumed by the Iambic hub role in the hub account. Managed via CloudFormation.
+      included_accounts:
+        - iambic_test_spoke_account_1
+        - iambic_test_spoke_account_2
+        - iambic_test_spoke_account_3
   assume_role_policy_document:
     statement:
       - action:
@@ -48,7 +56,7 @@ properties:
             - sqs:SendMessage
           effect: Allow
           resource:
-            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue
+            - arn:aws:sqs:*:*:IAMbicChangeDetectionQueue*
           sid: SqsWriteAccessForResourceMonitoring
         - action:
             - organizations:AttachPolicy

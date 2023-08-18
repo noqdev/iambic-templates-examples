@@ -1,0 +1,20 @@
+template_type: NOQ::AWS::Organizations::SCP
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_scp_policy_template
+account_id: '580605962305'
+identifier: iambic_test_3883
+org_id: o-8t0mt0ybdd
+properties:
+  description: This was created by a functional test.
+  policy_document:
+    statement:
+      action: lex:*
+      effect: Allow
+      resource: '*'
+  policy_id: p-3f0e0mff
+  policy_name: iambic_test_3883
+  targets:
+    accounts:
+      - '804624193200'
+      - iambic_test_spoke_account_1
+      - iambic_test_spoke_account_2
+      - iambic_test_spoke_account_3

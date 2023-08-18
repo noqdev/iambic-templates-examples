@@ -1,0 +1,14 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_identity_center_permission_set_template
+identifier: issue_593_statement_grammar
+properties:
+  name: issue_593_statement_grammar
+  description: example permission set to trigger issue 593
+  inline_policy:
+    statement:
+      action:
+        - s3:ListAllMyBuckets
+      effect: Deny
+      resource: '*'
+      sid: Statement1
+  session_duration: PT1H

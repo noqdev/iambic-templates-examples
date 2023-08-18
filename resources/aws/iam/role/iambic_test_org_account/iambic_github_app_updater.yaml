@@ -4,6 +4,7 @@ included_accounts:
   - iambic_test_org_account
 identifier: iambic_github_app_updater
 properties:
+  description: out-of-band-description-change - bar 6
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRoleWithWebIdentity

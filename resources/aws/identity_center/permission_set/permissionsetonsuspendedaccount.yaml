@@ -1,0 +1,21 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_identity_center_permission_set_template
+access_rules:
+  - included_accounts: []
+    included_orgs:
+      - o-8t0mt0ybdd
+    users:
+      - steven@noq.dev
+identifier: PermissionSetOnSuspendedAccount
+properties:
+  name: PermissionSetOnSuspendedAccount
+  description: PermissionSetOnSuspendedAccount
+  inline_policy:
+    statement:
+      - action:
+          - s3:ListAllMyBuckets
+        effect: Deny
+        resource:
+          - '*'
+        sid: DenyStatement
+  session_duration: PT1H
