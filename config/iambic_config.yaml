@@ -31,6 +31,9 @@ aws:
         region: us-east-1
       org_account_id: '580605962305'
       org_id: o-8t0mt0ybdd
+core:
+  detection_messages:
+    enabled: true
 extends:
   - assume_role_arn: arn:aws:iam::580605962305:role/IambicSpokeRole
     key: AWS_SECRETS_MANAGER
