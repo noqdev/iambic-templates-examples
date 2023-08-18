@@ -4,7 +4,7 @@ included_accounts:
   - iambic_test_org_account
 identifier: iambic_github_app_updater
 properties:
-  description: out-of-band-description-change - 2023-08-18
+  description: out-of-band-description-change - 2023-08-18 2pm
   assume_role_policy_document:
     statement:
       - action: sts:AssumeRoleWithWebIdentity
