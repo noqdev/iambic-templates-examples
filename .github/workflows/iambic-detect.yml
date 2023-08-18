@@ -1,0 +1,19 @@
+name: Run Iambic Detect
+on:
+  workflow_dispatch
+
+jobs:
+  iambic-detect:
+    runs-on: ubuntu-latest
+    environment: production
+    if: github.ref == 'refs/heads/main'
+    name: Trigger Detect
+    timeout-minutes: 13 # this job is scheduled for every 15 min, setting it to 13 to have some margin
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+    steps:
+      - name: pull container
+        id: pull_container
+        run: |
+          echo "trigger lambda app"
