@@ -31,6 +31,8 @@ aws:
         region: us-east-1
       org_account_id: '580605962305'
       org_id: o-8t0mt0ybdd
+  sqs_cloudtrail_changes_queues:
+    - arn:aws:sqs:us-east-1:580605962305:IAMbicChangeDetectionQueue
 core:
   detection_messages:
     enabled: true
