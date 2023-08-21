@@ -19,4 +19,9 @@ properties:
         - iambic_test_spoke_account_1
       policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
   path: /iambic_test/
+  tags:
+    - included_accounts:
+        - iambic_test_org_account
+      key: AKIAYOLWP5BAT4KEVOWQ
+      value: Pen testing
   user_name: iambic_test_14
