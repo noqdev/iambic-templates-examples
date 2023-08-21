@@ -11,7 +11,7 @@ properties:
           - sts:TagSession
         effect: Allow
         principal:
-          aws: arn:aws:iam::580605962305:role/IambicHubRoleOrgReadOnly
+          aws: AROAYOLWP5BA3J776HC2R
     version: '2012-10-17'
   inline_policies:
     - included_accounts:
