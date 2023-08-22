@@ -1,0 +1,30 @@
+template_type: NOQ::AWS::IdentityCenter::PermissionSet
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_identity_center_permission_set_template
+access_rules:
+  - groups:
+      - engineering
+    included_orgs:
+      - o-8t0mt0ybdd
+identifier: debug
+properties:
+  name: debug
+  customer_managed_policy_references:
+    - name: base_deny
+  inline_policy:
+    statement:
+      - action:
+          - ec2:list*
+        effect: Deny
+        resource:
+          - '*'
+      - action:
+          - ec2:list*
+        effect: Deny
+        resource:
+          - '*'
+  managed_policies:
+    - arn: arn:aws:iam::aws:policy/AWSHealthFullAccess
+  permissions_boundary:
+    customer_managed_policy_reference:
+      name: base_permission_boundary
+  session_duration: PT4H
