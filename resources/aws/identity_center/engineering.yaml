@@ -1,7 +1,12 @@
 template_type: NOQ::AWS::IdentityCenter::PermissionSet
 template_schema_url: https://docs.iambic.org/reference/schemas/aws_identity_center_permission_set_template
 access_rules:
-  - expires_at: 2027-05-19T14:37 UTC
+  - included_accounts:
+      - iambic_test_org_account
+      - iambic_test_spoke_account_1
+      - iambic_test_spoke_account_2
+      - iambic_test_spoke_account_3
+    expires_at: 2027-05-19T14:37 UTC
     groups:
       - engineering
     included_orgs:
