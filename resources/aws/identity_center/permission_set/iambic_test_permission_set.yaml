@@ -16,6 +16,14 @@ access_rules:
       - admin
     included_orgs:
       - o-8t0mt0ybdd
+  - included_accounts:
+      - iambic_test_spoke_account_1
+      - iambic_test_spoke_account_2
+      - iambic_test_spoke_account_3
+    included_orgs:
+      - o-8t0mt0ybdd
+    users:
+      - curtis@noq.dev
 identifier: iambic_test_permission_set
 properties:
   name: iambic_test_permission_set

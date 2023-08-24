@@ -1,7 +1,0 @@
-template_type: NOQ::AWS::IdentityCenter::PermissionSet
-template_schema_url: https://docs.iambic.org/reference/schemas/aws_identity_center_permission_set_template
-identifier: iambic_test_update3705
-properties:
-  name: iambic_test_update3705
-  description: This was created by a functional test.
-  session_duration: PT1H

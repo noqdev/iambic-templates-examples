@@ -10,6 +10,14 @@ access_rules:
       - admin
     included_orgs:
       - o-8t0mt0ybdd
+  - included_accounts:
+      - iambic_test_spoke_account_1
+      - iambic_test_spoke_account_2
+      - iambic_test_spoke_account_3
+    groups:
+      - admin
+    included_orgs:
+      - o-8t0mt0ybdd
 identifier: AdministratorAccess
 properties:
   name: AdministratorAccess

@@ -11,6 +11,14 @@ access_rules:
       - engineering
     included_orgs:
       - o-8t0mt0ybdd
+  - included_accounts:
+      - iambic_test_spoke_account_1
+      - iambic_test_spoke_account_2
+      - iambic_test_spoke_account_3
+    groups:
+      - engineering
+    included_orgs:
+      - o-8t0mt0ybdd
 identifier: design
 properties:
   name: design
