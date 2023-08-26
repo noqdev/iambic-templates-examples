@@ -1,0 +1,28 @@
+template_type: NOQ::AWS::IAM::Role
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_role_template
+included_accounts:
+  - iambic_test_org_account
+identifier: NoqCentralRoleE2E202308
+properties:
+  assume_role_policy_document:
+    statement:
+      - action:
+          - sts:AssumeRole
+          - sts:TagSession
+        condition:
+          StringEquals:
+            sts:ExternalId: 404ba3db21761cd39c4e2069b16e99177f26afa3f935a38437261701c1d94895
+        effect: Allow
+        principal:
+          aws: arn:aws:iam::940552945933:role/noq-dev-shared-prod-1-ecsTaskRole
+    version: '2012-10-17'
+  inline_policies:
+    - policy_name: central-account-policy-877ddfe0
+      statement:
+        - action:
+            - sts:AssumeRole
+            - sts:TagSession
+          effect: Allow
+          resource: arn:aws:iam::*:role/NoqSpokeRoleE2E202308
+      version: '2012-10-17'
+  role_name: NoqCentralRoleE2E202308
