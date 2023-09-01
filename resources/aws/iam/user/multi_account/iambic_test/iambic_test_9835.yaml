@@ -1,0 +1,19 @@
+template_type: NOQ::AWS::IAM::User
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_user_template
+included_accounts:
+  - iambic_test_org_account
+  - iambic_test_spoke_account_1
+identifier: iambic_test_9835
+properties:
+  inline_policies:
+    - policy_name: spoke-acct-policy
+      statement:
+        - action:
+            - s3:initialpolicy
+          effect: Deny
+          resource: '*'
+      version: '2012-10-17'
+  managed_policies:
+    - policy_arn: arn:aws:iam::aws:policy/job-function/ViewOnlyAccess
+  path: /iambic_test/
+  user_name: iambic_test_9835
