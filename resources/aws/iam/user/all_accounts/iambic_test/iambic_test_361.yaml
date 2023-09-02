@@ -1,0 +1,88 @@
+template_type: NOQ::AWS::IAM::User
+template_schema_url: https://docs.iambic.org/reference/schemas/aws_iam_user_template
+identifier: iambic_test_361
+properties:
+  inline_policies:
+    - policy_name: replace_policy
+      statement:
+        - action:
+            - s3:NotARealAction0
+            - s3:NotARealAction1
+            - s3:NotARealAction10
+            - s3:NotARealAction11
+            - s3:NotARealAction12
+            - s3:NotARealAction13
+            - s3:NotARealAction14
+            - s3:NotARealAction15
+            - s3:NotARealAction16
+            - s3:NotARealAction17
+            - s3:NotARealAction18
+            - s3:NotARealAction19
+            - s3:NotARealAction2
+            - s3:NotARealAction20
+            - s3:NotARealAction21
+            - s3:NotARealAction22
+            - s3:NotARealAction23
+            - s3:NotARealAction24
+            - s3:NotARealAction25
+            - s3:NotARealAction26
+            - s3:NotARealAction27
+            - s3:NotARealAction28
+            - s3:NotARealAction29
+            - s3:NotARealAction3
+            - s3:NotARealAction30
+            - s3:NotARealAction31
+            - s3:NotARealAction32
+            - s3:NotARealAction33
+            - s3:NotARealAction34
+            - s3:NotARealAction35
+            - s3:NotARealAction36
+            - s3:NotARealAction37
+            - s3:NotARealAction38
+            - s3:NotARealAction39
+            - s3:NotARealAction4
+            - s3:NotARealAction40
+            - s3:NotARealAction41
+            - s3:NotARealAction42
+            - s3:NotARealAction43
+            - s3:NotARealAction44
+            - s3:NotARealAction45
+            - s3:NotARealAction46
+            - s3:NotARealAction47
+            - s3:NotARealAction48
+            - s3:NotARealAction49
+            - s3:NotARealAction5
+            - s3:NotARealAction50
+            - s3:NotARealAction51
+            - s3:NotARealAction52
+            - s3:NotARealAction53
+            - s3:NotARealAction54
+            - s3:NotARealAction55
+            - s3:NotARealAction56
+            - s3:NotARealAction57
+            - s3:NotARealAction58
+            - s3:NotARealAction59
+            - s3:NotARealAction6
+            - s3:NotARealAction60
+            - s3:NotARealAction61
+            - s3:NotARealAction62
+            - s3:NotARealAction63
+            - s3:NotARealAction64
+            - s3:NotARealAction65
+            - s3:NotARealAction66
+            - s3:NotARealAction67
+            - s3:NotARealAction68
+            - s3:NotARealAction69
+            - s3:NotARealAction7
+            - s3:NotARealAction70
+            - s3:NotARealAction71
+            - s3:NotARealAction72
+            - s3:NotARealAction73
+            - s3:NotARealAction74
+            - s3:NotARealAction8
+            - s3:NotARealAction9
+          effect: Deny
+          resource:
+            - '*'
+  path: /iambic_test/
+  user_name: iambic_test_361
